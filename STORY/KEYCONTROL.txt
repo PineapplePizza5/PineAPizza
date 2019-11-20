@@ -1,0 +1,4 @@
+/* ***아빠의 조작키 설명 *** */
+LIVINGROOM
+DAD SKIP "skip을 원한다면 모두 머리 위로 동그라미를 그리도록 해라."
+SCRIPT NONE "* 따라하세요. (O) *" 

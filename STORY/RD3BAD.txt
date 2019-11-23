@@ -1,5 +1,0 @@
-/* *** 3라운드 : 토마토소스 칠하기 실패 *** */
-KITCHEN
-DAD NONE "APPLE, 잘했군."
-DAD NONE "PINE... ... ."
-APPLE HAPPY "역시 우리 가게 후계자는 나지!"

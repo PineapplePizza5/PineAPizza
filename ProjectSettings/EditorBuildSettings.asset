@@ -18,9 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TableScene.unity
     guid: 13ca2c236c3c5df4bab3a2a46598bd7f
   - enabled: 1
-    path: Assets/Scenes/OvenScene.unity
-    guid: 7f1b572bee51a3142805a4a4c8a23905
-  - enabled: 1
     path: Assets/Scenes/Interrupt.unity
     guid: 379aa13b661e5d2448f601618da82fa2
   - enabled: 1

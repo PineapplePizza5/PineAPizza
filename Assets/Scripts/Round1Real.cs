@@ -18,7 +18,7 @@ public class Round1Real : MonoBehaviour
     public GameObject wrong;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         if (true)   //고앵이의 상황 변수가 라운드1의 실전일 때 실행
         {
@@ -61,4 +61,7 @@ public class Round1Real : MonoBehaviour
         pineApple.SetActive(false);
         sliced.SetActive(true);
     }
+
+    //종료하면서 고양이 상태변수 RD2PRAC으로 변경
+
 }

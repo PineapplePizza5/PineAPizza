@@ -12,13 +12,15 @@ using UnityEngine;
 
 public class Round3Real : MonoBehaviour
 {
+    public GameObject oven;
     public GameObject perfectPizza;
     public GameObject correct;
     public GameObject wrong;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
+        oven.SetActive(true);
         if (true)   //고앵이의 상황 변수가 라운드3의 실전일 때 실행
         {
             Invoke("Round3real", 6);

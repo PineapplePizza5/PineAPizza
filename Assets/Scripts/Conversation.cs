@@ -35,7 +35,7 @@ public class Conversation : MonoBehaviour
     private void Awake()
     {
         // 어느 상황인지 고양이에 저장된 컴포넌트에서 SceneData불러오기.(수정해야함)
-        sceneData = "RD1PREC";
+        sceneData = "RD4REAL";
     }
 
     // Start is called before the first frame update

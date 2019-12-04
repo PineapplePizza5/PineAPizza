@@ -1,4 +1,7 @@
 sceneSetups:
-- path: Assets/Scenes/TableScene.unity
+- path: Assets/Scenes/Interrupt.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/KinectView/MainScene.unity
+  isLoaded: 1
+  isActive: 0

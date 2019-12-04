@@ -23,7 +23,7 @@ public class Round1Prac : MonoBehaviour
     int a = 1;  //a가 1이면 동작을 첫 번째로 보여준다는 것을 의미
     
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         if (true)   //고앵이의 상황 변수가 라운드1의 연습일 때 실행
         {
@@ -94,7 +94,9 @@ public class Round1Prac : MonoBehaviour
         movement2.SetActive(false);
         pineApple.SetActive(false);
         correct.SetActive(false);
-        sliced.SetActive(true);        
+        sliced.SetActive(true);     
+        
+        //종료하면서 고양이 상태변수 RD1REAL으로 변경
 
     }
 

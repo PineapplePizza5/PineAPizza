@@ -4,6 +4,7 @@
  * 최조 작성일 : 2019년 12월 03일
  * 최종 작성일 : 2019년 12월 04일
  * 프로그램 설명 : 총 3개의 라운드, 2번의 동생 난입, 최종 시험의 흐름을 관리한다.
+ *                 전체 흐름은 다음과 같다. RD1PREC -> RD1REAL -> NANIP1 -> RD2PREC -> RD2REA ->L RD3PRAC -> NANIP2 -> RD3REAL -> FINAL
  * *************************************************************** */
 
 using System.Collections;
@@ -13,64 +14,86 @@ using UnityEngine;
 
 public class RoundFlow : MonoBehaviour
 {
+    Round1Prac prac1;
+    Round1Real real1;
+    Round2Prac prac2;
+    Round2Real real2;
+    Round3Prac prac3;
+    Round3Real real3;
+
+    NanIp1 nanIp1;
+    NanIp2 nanIp2;
+
+    FinalRound final;
+
+    Container situ;
+
     // Start is called before the first frame update
     void Start()
     {
-        Round1Prac prac1 = GameObject.Find("Canvass").GetComponent<Round1Prac>();
-        Round1Real real1 = GameObject.Find("Canvass").GetComponent<Round1Real>();
+        prac1 = GameObject.Find("Canvass").GetComponent<Round1Prac>();
+        real1 = GameObject.Find("Canvass").GetComponent<Round1Real>();
 
-        Round2Prac prac2 = GameObject.Find("Canvass").GetComponent<Round2Prac>();
-        Round2Real real2 = GameObject.Find("Canvass").GetComponent<Round2Real>();
+        prac2 = GameObject.Find("Canvass").GetComponent<Round2Prac>();
+        real2 = GameObject.Find("Canvass").GetComponent<Round2Real>();
 
-        Round3Prac prac3 = GameObject.Find("Canvass").GetComponent<Round3Prac>();
-        Round3Real real3 = GameObject.Find("Canvass").GetComponent<Round3Real>();
+        prac3 = GameObject.Find("Canvass").GetComponent<Round3Prac>();
+        real3 = GameObject.Find("Canvass").GetComponent<Round3Real>();
+
+        nanIp1 = GameObject.Find("Canvass").GetComponent<NanIp1>();
+        nanIp2 = GameObject.Find("Canvass").GetComponent<NanIp2>();
+
+        final = GameObject.Find("Canvass").GetComponent<FinalRound>();
+
+        situ = GameObject.Find("Situation").GetComponent<Container>();
 
     }
 
     // Update is called once per frame
     void Update()                           //수정 필요
     {
-        //switch(고양이 상황변수) {
-        //  case RD1PREC:
-        //      prac1.Start();
-        //      break;
-        //
-        //  case RD1REAL:
-        //      real1.Start();
-        //      break;
-        //
-        //  case RD2PREC:
-        //      prac2.Start();
-        //      break;
-        //
-        //  case RD2REAL:
-        //      real2.Start();
-        //      break;
-        //
-        //  case RD3PREC:
-        //      prac3.Start();
-        //      break;
-        //
-        //  case RD3REAL:
-        //      real3.Start();
-        //      break;
-        //
-        //  case NANIP1:
-        //      
-        //      break;
-        //
-        //  case NANIP2:
-        //      
-        //      break;
-        //
-        //  case FINAL:
-        //      
-        //      break;
-        //
-        //  default:
-        //      break;
-        //}
+        switch (situ.situation) {
+          case "RD1PREC":
+            prac1.Start();
+            break;
+        
+          case "RD1REAL":
+            real1.Start();
+            break;
+        
+          case "RD2PREC":
+            prac2.Start();
+            break;
+        
+          case "RD2REAL":
+            real2.Start();
+            break;
+        
+          case "RD3PREC":
+            prac3.Start();
+            break;
+        
+          case "RD3REAL":
+            real3.Start();
+            break;
+        
+          case "NANIP1":
+            nanIp1.Start();
+            break;
+        
+          case "NANIP2":
+            nanIp2.Start();
+            break;
+        
+          case "FINAL":
+            final.Start();
+            break;
+
+            default:
+              break;
+        }
 
 
     }
 }
+

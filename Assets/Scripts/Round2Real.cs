@@ -18,7 +18,7 @@ public class Round2Real : MonoBehaviour
     public GameObject wrong;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         if (true)   //고앵이의 상황 변수가 라운드2의 실전일 때 실행
         {
@@ -61,4 +61,6 @@ public class Round2Real : MonoBehaviour
         dough.SetActive(false);
         toppedPizza.SetActive(true);
     }
+
+    //종료하면서 고양이 상태변수 RD3PRAC으로 변경
 }

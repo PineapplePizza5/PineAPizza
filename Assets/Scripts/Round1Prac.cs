@@ -5,7 +5,7 @@
  * 최종 작성일 : 2019년 12월 03일
  * 프로그램 설명 : Round1의 연습 단계에 알맞게 창을 구성한다.
  * *************************************************************** */
-
+ 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,8 +15,6 @@ public class Round1Prac : MonoBehaviour
     public GameObject pineApple;
     public GameObject sliced;
     public GameObject rectangle;
-    public GameObject movement1;
-    public GameObject movement2;
     public GameObject correct;
     public GameObject wrong;
 
@@ -25,10 +23,9 @@ public class Round1Prac : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        if (true)   //고앵이의 상황 변수가 라운드1의 연습일 때 실행
-        {
-            Invoke("Round1prac", 8);
-        }
+        Debug.Log("a");
+        pineApple.SetActive(true);
+        Invoke("Round1prac", 8);
     }
 
     // Update is called once per frame
@@ -37,67 +34,83 @@ public class Round1Prac : MonoBehaviour
         
     }
 
+    //프로그램 흐름
+    //재료 출력 -> 네모 출력 -> 도형1 출력(순서대로) -> 지우기 -> 도형2 출력(순서대로) -> 지우기
+    //-> 도형1 출력(한번에)-> 맞을 때까지 검사 -> 맞으면 O 출력
+    //-> 도형2 출력(한번에)-> 맞을 때까지 검사 -> 맞으면 O 출력
+    //-> 완성된 재료 출력
+
     void Round1prac()
     {
+        pineApple.SetActive(false);
         rectangle.SetActive(true);
-        movement1.SetActive(false);
-        movement2.SetActive(false);
-        sliced.SetActive(false);
-        Invoke("ShowMovement1", 1);
+        Invoke("ShowShape1", 2);
     }
 
-    void ShowMovement1()
-    {
-        movement1.SetActive(true);
-        Invoke("ShowMovement2", 1);
-    }
 
-    void ShowMovement2()
+    void ShowShape1()
     {
-        movement1.SetActive(false);
-        movement2.SetActive(true);
+        //이전 모양 지우기
 
         if (a == 1)
         {
             a--;
-            Invoke("Round1prac", 3);
+            //점으로 이루어진 E를 '순서대로' 보여주는 코드
         }
+
         else
         {
-            Invoke("ShowPineApple", 2);
+            //점으로 이루어진 E를 '한번에' 보여주는 코드
+
+            //알맞은 동작을 할 때까지 검사하는 반복문
+            //if(동작이 맞으면){
+            //      correct.SetActive(true);
+            //      break;
+            //}
+            //else {
+            //      
+            //      wrong.SetActive(true);
+            //}
+
+            Invoke("ShowShape2", 2);
+        }
+
+    }
+
+    void ShowShape2()
+    {
+        //이전 모양 지우기
+
+        if (a == 1)
+        {
+            a--;
+            //점으로 이루어진 V를 '순서대로' 보여주는 코드
+            Invoke("ShowShape1", 2);
+        }
+
+        else
+        {
+            //점으로 이루어진 V를 '한번에' 보여주는 코드
+
+            //알맞은 동작을 할 때까지 검사하는 반복문
+            //if(동작이 맞으면){
+            //      correct.SetActive(true);
+            //      Invoke("ShowSliced", 2);
+            //      break;
+            //}
+            //else {
+            //      
+            //      wrong.SetActive(true);
+            //}
         }
         
-    }
-
-    void ShowPineApple()
-    {
-        wrong.SetActive(false);
-        rectangle.SetActive(false);
-        movement2.SetActive(false);
-        pineApple.SetActive(true);
-
-        if (true)   //'재료 손질' 동작이 알맞게 인식된 경우(수정 필요)
+        void ShowSliced()
         {
-            correct.SetActive(true);    //동그라미 표시
-            Invoke("ShowSliced", 2);    //손질된 재료를 보여주는 함수 호출
+            sliced.SetActive(true);
         }
-        else        //틀린 동작이 인식된 경우
-        {
-            wrong.SetActive(true);      //엑스 표시
-            Invoke("ShowPineApple", 2); //ShowPineApple 재귀호출
-        }
-    }
-
-    void ShowSliced()
-    {
-        rectangle.SetActive(false);
-        movement2.SetActive(false);
-        pineApple.SetActive(false);
-        correct.SetActive(false);
-        sliced.SetActive(true);     
-        
-        //종료하면서 고양이 상태변수 RD1REAL으로 변경
 
     }
+
+    //종료하면서 고양이 상태변수 RD1REAL으로 변경
 
 }

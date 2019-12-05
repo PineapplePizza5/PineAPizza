@@ -20,10 +20,7 @@ public class Round2Real : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        if (true)   //고앵이의 상황 변수가 라운드2의 실전일 때 실행
-        {
-            Invoke("Round2real", 6);
-        }
+        Invoke("Round2real", 6);
     }
 
     // Update is called once per frame

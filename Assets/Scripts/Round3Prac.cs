@@ -26,10 +26,7 @@ public class Round3Prac : MonoBehaviour
     public void Start()
     {
         oven.SetActive(true);
-        if (true)   //고앵이의 상황 변수가 라운드3의 연습일 때 실행
-        {
-            Invoke("Round3prac", 8);
-        }
+        Invoke("Round3prac", 8);
     }
 
     // Update is called once per frame
@@ -97,6 +94,6 @@ public class Round3Prac : MonoBehaviour
 
     }
 
-    //종료하면서 고양이 상태변수 RD3REAL으로 변경
+    //종료하면서 고양이 상태변수 NANIP2로 변경
 
 }

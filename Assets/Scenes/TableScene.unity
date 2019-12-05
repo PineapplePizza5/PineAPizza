@@ -1840,7 +1840,7 @@ Transform:
   m_Father: {fileID: 1401830018}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &6432065268393264188
+--- !u!1001 &7056838672149341758
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1955,6 +1955,11 @@ PrefabInstance:
     - target: {fileID: 6432065268531812284, guid: e772b74d941e4c94a894ffb55c2fa736,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561545120173936986, guid: e772b74d941e4c94a894ffb55c2fa736,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

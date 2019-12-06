@@ -21,6 +21,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Interrupt.unity
     guid: 379aa13b661e5d2448f601618da82fa2
   - enabled: 1
-    path: Assets/Scenes/Ending.unity
-    guid: 449e370a2a9006d46a1dbcb33b0ac5a6
+    path: Assets/Scenes/BadEnding.unity
+    guid: eee95d1708f072b43b296d699d9f4424
+  - enabled: 1
+    path: Assets/Scenes/HappyEnding.unity
+    guid: 751229374d5d31f4bbda199032ac0c51
+  - enabled: 1
+    path: Assets/Scenes/NormalEnding.unity
+    guid: 94122e00f8d5cca4b9bfe933ff74a47c
   m_configObjects: {}

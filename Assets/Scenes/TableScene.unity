@@ -1145,6 +1145,7 @@ GameObject:
   - component: {fileID: 1401830022}
   - component: {fileID: 1401830021}
   - component: {fileID: 1401830024}
+  - component: {fileID: 1401830025}
   m_Layer: 5
   m_Name: Canvass
   m_TagString: Untagged
@@ -1167,8 +1168,6 @@ MonoBehaviour:
   pineApple: {fileID: 1396757960}
   sliced: {fileID: 1109637017}
   rectangle: {fileID: 204974037}
-  movement1: {fileID: 1358680427}
-  movement2: {fileID: 372759079}
   correct: {fileID: 1095910022}
   wrong: {fileID: 620140731}
 --- !u!114 &1401830015
@@ -1363,6 +1362,19 @@ MonoBehaviour:
   perfectPizza: {fileID: 1782123821}
   correct: {fileID: 1095910022}
   wrong: {fileID: 620140731}
+--- !u!114 &1401830025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401830013}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeaf2c223eee0b845ba4c14391949f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yeah: 3
 --- !u!1 &1485475070
 GameObject:
   m_ObjectHideFlags: 0

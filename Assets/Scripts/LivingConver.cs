@@ -2,7 +2,7 @@
  * 프로그램 명 : LivingConver.cs
  * 작성자 : 이송이 (류서현, 신은지, 최세화, 최은정, 홍예지)
  * 최조 작성일 : 2019년 12월 04일
- * 최종 작성일 : 2019년 12월 05일
+ * 최종 작성일 : 2019년 12월 06일
  * 프로그램 설명 : 파일 입출력으로 Livingroom Scene에 맞는 대화를 불러온 뒤
  *                      게임 화면에 대화 형식으로 보여준다.
  * *************************************************************** */
@@ -41,6 +41,11 @@ public class LivingConver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    }
+
+    public void start_livingcon()
+    {
+
         // 선택에 따른 파일 오픈
         data = Resources.Load(sceneData, typeof(TextAsset)) as TextAsset;
         reader = new StringReader(data.text);
@@ -58,7 +63,6 @@ public class LivingConver : MonoBehaviour
         // 2초마다 DoConversation함수 호출
         InvokeRepeating("DoConversation", 0, 2);
     }
-
     // Update is called once per frame
     void Update()
     {

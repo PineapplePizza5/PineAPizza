@@ -24,6 +24,7 @@ public class LivingConver : MonoBehaviour
     public Text ConverText;
     public Text CharText;
 
+    Container situ;
     // initialize text file's path
     private string sceneData;
 
@@ -34,8 +35,9 @@ public class LivingConver : MonoBehaviour
 
     private void Awake()
     {
-        // 어느 상황인지 고양이에 저장된 컴포넌트에서 SceneData불러오기.(수정해야함)
-        sceneData = "CAT";
+        // 어느 상황인지 고양이에 저장된 컴포넌트에서 SceneData불러오기.
+        situ = GameObject.Find("Situation").GetComponent<Container>();
+        sceneData = situ.situation;
     }
 
     // Start is called before the first frame update
@@ -43,30 +45,17 @@ public class LivingConver : MonoBehaviour
     {
     }
 
-    public void start_livingcon()
+    public void start_livingcon(string selectCharac)
     {
-
         // 선택에 따른 파일 오픈
-        data = Resources.Load(sceneData, typeof(TextAsset)) as TextAsset;
+        data = Resources.Load(selectCharac, typeof(TextAsset)) as TextAsset;
         reader = new StringReader(data.text);
         // buff에 한 줄 받아오기
         buff = reader.ReadLine();
         Debug.Log(buff); // 현재 상황을 Console에 표시
-
-        // buff에 한 줄 받아오기(씬 정보 받아오기)
-        buff = reader.ReadLine();
-        if (buff != sceneData)
-        {
-
-        }
-
+        
         // 2초마다 DoConversation함수 호출
         InvokeRepeating("DoConversation", 0, 2);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void DoConversation()

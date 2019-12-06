@@ -17,10 +17,6 @@ public class CameraMove : MonoBehaviour
     Transform trans;
 
     public Camera mainCamera;
-    // Start is called before the first frame update
-    public void Start()
-    {
-    }
 
     public void moving(int target)
     {
@@ -35,12 +31,6 @@ public class CameraMove : MonoBehaviour
         }
         mainCamera.fieldOfView = 18;
 
-    }
-
-    // Update is called once per frame
-    void LateUpdate()
-    {
         transform.position = new Vector3(trans.position.x,trans.position.y,transform.position.z);
     }
-    
 }

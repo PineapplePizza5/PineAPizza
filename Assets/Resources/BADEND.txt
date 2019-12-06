@@ -1,5 +1,4 @@
 /* *** Bad Ending *** */
-NORMALENDING
 DAD,( 피자를 먹은 후 . . . ) 결정했다.
 DAD,후계자는 ...
 DAD, ... ... .

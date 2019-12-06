@@ -50,7 +50,7 @@ public class RoundFlow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()                           //수정 필요
+    void Update()
     {
         switch (situ.situation) {
           case "RD1PREC":
@@ -96,4 +96,3 @@ public class RoundFlow : MonoBehaviour
 
     }
 }
-

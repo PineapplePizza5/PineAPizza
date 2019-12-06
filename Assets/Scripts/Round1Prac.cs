@@ -23,9 +23,10 @@ public class Round1Prac : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        Debug.Log("a");
         pineApple.SetActive(true);
         Invoke("Round1prac", 8);
+
+        
     }
 
     // Update is called once per frame

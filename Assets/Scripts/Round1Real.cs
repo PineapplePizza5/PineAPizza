@@ -20,10 +20,7 @@ public class Round1Real : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        if (true)   //고앵이의 상황 변수가 라운드1의 실전일 때 실행
-        {
-            Invoke("Round1real", 4);
-        }
+        Invoke("Round1real", 4);
     }
 
     // Update is called once per frame
@@ -62,6 +59,6 @@ public class Round1Real : MonoBehaviour
         sliced.SetActive(true);
     }
 
-    //종료하면서 고양이 상태변수 RD2PRAC으로 변경
+    //종료하면서 고양이 상태변수 NANIP1으로 변경
 
 }

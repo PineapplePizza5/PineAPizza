@@ -5,7 +5,7 @@ using UnityEngine;
 public class FinalRound : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         
     }

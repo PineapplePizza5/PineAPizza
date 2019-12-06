@@ -21,10 +21,7 @@ public class Round3Real : MonoBehaviour
     public void Start()
     {
         oven.SetActive(true);
-        if (true)   //고앵이의 상황 변수가 라운드3의 실전일 때 실행
-        {
-            Invoke("Round3real", 6);
-        }
+        Invoke("Round3real", 6);
     }
 
     // Update is called once per frame
@@ -60,4 +57,6 @@ public class Round3Real : MonoBehaviour
         correct.SetActive(false);
         perfectPizza.SetActive(true);
     }
+
+    //종료하면서 고양이 상태변수 FINAL으로 변경
 }

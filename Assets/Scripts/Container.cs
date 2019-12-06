@@ -13,7 +13,7 @@ using UnityEngine;
 
 public class Container : MonoBehaviour
 {
-    public string situation;
+    public string situation = "RD1PREC";
     // Start is called before the first frame update
     void Start()
     {

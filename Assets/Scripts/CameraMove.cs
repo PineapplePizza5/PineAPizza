@@ -1,56 +1,36 @@
-﻿using System.Collections;
+﻿/* ***************************************************************
+ * 프로그램 명 : CameraMove.cs
+ * 작성자 : 이송이 (류서현, 신은지, 최세화, 최은정, 홍예지)
+ * 최조 작성일 : 2019년 12월 04일
+ * 최종 작성일 : 2019년 12월 06일
+ * 프로그램 설명 : 선택된 NPC에 카메라 고정 후 확대
+ * *************************************************************** */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-//public class CameraMove : MonoBehaviour
-//{
-
-//    public Transform CameraTarget;
-//    public float dist = 10.0f;
-//    public float height = 5.0f;
-//    public float dampRotate = 5.0f;
-//    public float TurnSpeed;
-//    public float camPos;
-//    Vector3 v3;
-
-//    private Transform tr;
-//    // Start is called before the first frame update
-//    void Start()
-//    {
-//        tr = GetComponent<Transform>();
-//        TurnSpeed = 2f;
-//        camPos = 2f;
-//       // CatTarget = Cat.transform;
-//    }
-
-//    // Update is called once per frame
-//    void Update()
-//    {
-//        Vector3 PositionInfo = tr.position - CameraTarget.position;
-//        PositionInfo = Vector3.Normalize(PositionInfo);
-//        tr.position = tr.position - (PositionInfo * Input.GetAxis("Mouse ScrollWheel") * TurnSpeed);
-//    }
-//}
-
 
 public class CameraMove : MonoBehaviour
 {
     public GameObject Cat;
-    Transform CatTarget;
+    public GameObject Mom;
+    Transform trans;
 
     public Camera mainCamera;
-    // Start is called before the first frame update
-    void Start()
-    {
-        mainCamera = GetComponent<Camera>();
 
+    public void moving(int target)
+    {
+        //mainCamera = GetComponent<Camera>();
+        if(target == 0)
+        {
+            trans = Cat.transform;
+        }
+        else if (target == 1)
+        {
+            trans = Mom.transform;
+        }
         mainCamera.fieldOfView = 18;
-        CatTarget = Cat.transform;
-    }
 
-    // Update is called once per frame
-    void LateUpdate()
-    {
-        transform.position = new Vector3(CatTarget.position.x,CatTarget.position.y,transform.position.z);
+        transform.position = new Vector3(trans.position.x,trans.position.y,transform.position.z);
     }
 }

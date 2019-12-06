@@ -1,5 +1,4 @@
 /* *** Normal Ending *** */
-NORMALENDING
 DAD,( 피자를 먹은 후 . . . ) 음..
 DAD, ... ... .
 DAD,흠 일단 피자가게는 파인이가 잇는 게 낫겠구나.

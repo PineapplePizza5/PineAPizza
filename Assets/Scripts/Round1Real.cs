@@ -2,7 +2,7 @@
  * 프로그램 명 : Round1Real.cs
  * 작성자 : 최은정 (이송이, 류서현, 신은지, 최세화, 홍예지)
  * 최조 작성일 : 2019년 12월 02일
- * 최종 작성일 : 2019년 12월 03일
+ * 최종 작성일 : 2019년 12월 07일
  * 프로그램 설명 : Round1의 실전 단계에 알맞게 창을 구성한다.
  * *************************************************************** */
 
@@ -12,53 +12,76 @@ using UnityEngine;
 
 public class Round1Real : MonoBehaviour
 {
-    public GameObject pineApple;
     public GameObject sliced;
+    public GameObject ingredient1;
+    public GameObject ingredient2;
     public GameObject correct;
     public GameObject wrong;
+    Container situ;
 
     // Start is called before the first frame update
     public void Start()
     {
+        situ = GameObject.Find("Situation").GetComponent<Container>();
+
         Invoke("Round1real", 4);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     void Round1real()
     {
-        ShowPineApple();
+        Invoke("ShowShape1", 1);
     }
 
-    void ShowPineApple()
+    void ShowShape1()
     {
-        sliced.SetActive(false);
-        wrong.SetActive(false);
-        pineApple.SetActive(true);
+        ingredient1.SetActive(true);
 
-        if (true)   //'재료 손질' 동작이 알맞게 인식된 경우(수정 필요)
-        {
-            correct.SetActive(true);    //동그라미 표시
-            Invoke("ShowSliced", 2);    //손질된 재료를 보여주는 함수 호출
-        }
-        else        //틀린 동작이 인식된 경우
-        {
-            wrong.SetActive(true);      //엑스 표시
-            Invoke("ShowPineApple", 2); //ShowPineApple 재귀호출
-        }
+        //while (true)
+        //{
+        //    if(알맞은 동작 인식) {
+        //          correct.SetActive(true);
+        //          break;
+        //    }
+        //    else if(남은시간 < 0) {
+        //          wrong.SetActive(true);
+        //          break;
+        //    }
+        //}
+
+        Invoke("ShowShape2", 2);
+    }
+
+    void ShowShape2()
+    {
+        correct.SetActive(false);
+        wrong.SetActive(false);
+        ingredient1.SetActive(false);
+
+        ingredient2.SetActive(true);
+
+        //while (true)
+        //{
+        //    if(알맞은 동작 인식) {
+        //          correct.SetActive(true);
+        //          break;
+        //    }
+        //    else if(남은시간 < 0) {
+        //          wrong.SetActive(true);
+        //          break;
+        //    }
+        //}
+
+        Invoke("ShowSliced", 2);
+
     }
 
     void ShowSliced()
     {
         correct.SetActive(false);
-        pineApple.SetActive(false);
-        sliced.SetActive(true);
-    }
+        wrong.SetActive(false);
 
-    //종료하면서 고양이 상태변수 NANIP1으로 변경
+        sliced.SetActive(true);
+        situ.situation = "NANIP1";
+    }
 
 }

@@ -15,4 +15,6 @@ public class FinalRound : MonoBehaviour
     {
         
     }
+
+    //종료하면서 고양이 상태변수 END로 변경
 }

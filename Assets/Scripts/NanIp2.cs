@@ -65,5 +65,5 @@ public class NanIp2 : MonoBehaviour
 
     }
 
-    //종료하면서 고양이 상태변수 RND3REAL으로 변경
+    //종료하면서 고양이 상태변수 RD3REAL으로 변경
 }

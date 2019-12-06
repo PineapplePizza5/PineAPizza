@@ -2,7 +2,7 @@
  * 프로그램 명 : Conversation.cs
  * 작성자 : 이송이 (류서현, 신은지, 최세화, 최은정, 홍예지)
  * 최조 작성일 : 2019년 11월 25일
- * 최종 작성일 : 2019년 12월 04일
+ * 최종 작성일 : 2019년 12월 06일
  * 프로그램 설명 : 파일 입출력으로 Scene에 맞는 대화를 불러온 뒤
  *                      게임 화면에 대화 형식으로 보여준다.
  * *************************************************************** */
@@ -24,7 +24,8 @@ public class Conversation : MonoBehaviour
     public GameObject ConversationPine;
     public GameObject ConversationText;
     public Text ConverText;
-    
+
+    Container situ;
     // initialize text file's path
     private string sceneData;
 
@@ -35,8 +36,9 @@ public class Conversation : MonoBehaviour
 
     private void Awake()
     {
-        // 어느 상황인지 고양이에 저장된 컴포넌트에서 SceneData불러오기.(수정해야함)
-        sceneData = "RD1PREC";
+        // 어느 상황인지 고양이에 저장된 컴포넌트에서 SceneData불러오기.
+        situ = GameObject.Find("Situation").GetComponent<Container>();
+        sceneData = situ.situation;
     }
 
     // Start is called before the first frame update
@@ -48,22 +50,9 @@ public class Conversation : MonoBehaviour
         // buff에 한 줄 받아오기 
         buff = reader.ReadLine();
         Debug.Log(buff); // 현재 상황을 Console에 표시
-
-        // buff에 한 줄 받아오기(씬 정보 받아오기)
-        buff = reader.ReadLine();
-        if (buff != sceneData) // 현재 씬과 다른 씬이면 그 씬으로 이동한다.
-        {
-            // 은정이가 만든 씬 이동 함수 이용(수정해야함)
-        }
-
+        
         // 2초마다 DoConversation함수 호출
         InvokeRepeating("DoConversation", 0, 2);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void DoConversation()

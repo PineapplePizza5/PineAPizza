@@ -18,4 +18,14 @@ public class SceneController : MonoBehaviour {
     public void SceneLoad(int sceneNum) {   //씬 번호(숫자)를 통해 씬을 로드
         SceneManager.LoadScene(sceneNum);
     }
+    public void GameQuit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
+        Application.OpenURL("http://google.com");
+#else
+        Application.Quit();
+#endif
+    }
 }

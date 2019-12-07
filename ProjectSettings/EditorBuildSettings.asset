@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Prologue.unity
     guid: 5a69fdc4a70e4904db9091360c6d8ff1
   - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: c1000770e20d9874380988451393313e
+  - enabled: 1
     path: Assets/Scenes/LivingRoom.unity
     guid: aa346bf3b6e16f3438a939518390c51f
   - enabled: 1

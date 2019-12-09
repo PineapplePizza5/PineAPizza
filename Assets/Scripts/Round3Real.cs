@@ -2,7 +2,7 @@
  * 프로그램 명 : Round3Real.cs
  * 작성자 : 최은정 (이송이, 류서현, 신은지, 최세화, 홍예지)
  * 최조 작성일 : 2019년 12월 02일
- * 최종 작성일 : 2019년 12월 03일
+ * 최종 작성일 : 2019년 12월 07일
  * 프로그램 설명 : Round3의 실전 단계에 알맞게 창을 구성한다.
  * *************************************************************** */
 
@@ -12,51 +12,75 @@ using UnityEngine;
 
 public class Round3Real : MonoBehaviour
 {
-    public GameObject oven;
     public GameObject perfectPizza;
+    public GameObject fire1;
+    public GameObject fire2;
     public GameObject correct;
     public GameObject wrong;
+    Container situ;
 
     // Start is called before the first frame update
     public void Start()
     {
-        oven.SetActive(true);
-        Invoke("Round3real", 6);
-    }
+        situ = GameObject.Find("Situation").GetComponent<Container>();
 
-    // Update is called once per frame
-    void Update()
-    {
-
+        Invoke("Round3real", 4);
     }
 
     void Round3real()
     {
-        ShowOven();
+        Invoke("ShowShape1", 1);
     }
 
-    void ShowOven()
+    void ShowShape1()
     {
-        perfectPizza.SetActive(false);
-        wrong.SetActive(false);
+        fire1.SetActive(true);
 
-        if (true)   //'피자 굽기' 동작이 알맞게 인식된 경우(수정 필요)
-        {
-            correct.SetActive(true);    //동그라미 표시
-            Invoke("ShowPerfect", 2);    //구워진 피자를 보여주는 함수 호출
-        }
-        else        //틀린 동작이 인식된 경우
-        {
-            wrong.SetActive(true);      //엑스 표시
-            Invoke("ShowOven", 2);      //ShowOven 재귀호출
-        }
+        //while (true)
+        //{
+        //    if(알맞은 동작 인식) {
+        //          correct.SetActive(true);
+        //          break;
+        //    }
+        //    else if(남은시간 < 0) {
+        //          wrong.SetActive(true);
+        //          break;
+        //    }
+        //}
+
+        Invoke("ShowShape2", 2);
     }
 
-    void ShowPerfect()
+    void ShowShape2()
     {
         correct.SetActive(false);
-        perfectPizza.SetActive(true);
+        wrong.SetActive(false);
+        fire1.SetActive(false);
+
+        fire2.SetActive(true);
+
+        //while (true)
+        //{
+        //    if(알맞은 동작 인식) {
+        //          correct.SetActive(true);
+        //          break;
+        //    }
+        //    else if(남은시간 < 0) {
+        //          wrong.SetActive(true);
+        //          break;
+        //    }
+        //}
+
+        Invoke("ShowPerfectPizza", 2);
+
     }
 
-    //종료하면서 고양이 상태변수 FINAL으로 변경
+    void ShowPerfectPizza()
+    {
+        correct.SetActive(false);
+        wrong.SetActive(false);
+
+        perfectPizza.SetActive(true);
+        situ.situation = "FINAL";
+    }
 }

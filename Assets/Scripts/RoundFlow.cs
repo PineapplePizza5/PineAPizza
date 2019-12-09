@@ -2,9 +2,9 @@
  * 프로그램 명 : RoundFlow.cs
  * 작성자 : 최은정 (이송이, 류서현, 신은지, 최세화, 홍예지)
  * 최조 작성일 : 2019년 12월 03일
- * 최종 작성일 : 2019년 12월 04일
+ * 최종 작성일 : 2019년 12월 06일
  * 프로그램 설명 : 총 3개의 라운드, 2번의 동생 난입, 최종 시험의 흐름을 관리한다.
- *                 전체 흐름은 다음과 같다. RD1PREC -> RD1REAL -> NANIP1 -> RD2PREC -> RD2REA ->L RD3PRAC -> NANIP2 -> RD3REAL -> FINAL
+ *                 전체 흐름은 다음과 같다. RD1PRAC -> RD1REAL -> NANIP1 -> RD2PRAC -> RD2REAL -> RD3PRAC -> NANIP2 -> RD3REAL -> FINAL
  * *************************************************************** */
 
 using System.Collections;
@@ -50,10 +50,10 @@ public class RoundFlow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()                           //수정 필요
+    void Update()
     {
         switch (situ.situation) {
-          case "RD1PREC":
+          case "RD1PRAC":
             prac1.Start();
             break;
         
@@ -61,7 +61,7 @@ public class RoundFlow : MonoBehaviour
             real1.Start();
             break;
         
-          case "RD2PREC":
+          case "RD2PRAC":
             prac2.Start();
             break;
         
@@ -69,7 +69,7 @@ public class RoundFlow : MonoBehaviour
             real2.Start();
             break;
         
-          case "RD3PREC":
+          case "RD3PRAC":
             prac3.Start();
             break;
         
@@ -89,6 +89,9 @@ public class RoundFlow : MonoBehaviour
             final.Start();
             break;
 
+          case "END":
+              //씬을 엔딩 씬으로 변경
+
             default:
               break;
         }
@@ -96,4 +99,3 @@ public class RoundFlow : MonoBehaviour
 
     }
 }
-

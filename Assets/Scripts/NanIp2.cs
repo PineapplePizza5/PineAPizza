@@ -2,7 +2,7 @@
  * 프로그램 명 : NanIp2.cs
  * 작성자 : 류서현(이송이, 신은지, 최세화, 최은정, 홍예지)
  * 최조 작성일 : 2019년 12월 04일
- * 최종 작성일 : 2019년 12월 04일
+ * 최종 작성일 : 2019년 12월 07일
  * 프로그램 설명 : 두 번째 동생 난입에 알맞게 창을 구성한다.
  *                 전체 흐름은 다음과 같다
  *                 네모 -> L -> 동작 검사 -> 맞으면 O, 틀리면 X
@@ -15,39 +15,38 @@ using UnityEngine;
 
 public class NanIp2 : MonoBehaviour
 {
-    public GameObject rectangle;
     public GameObject correct;
     public GameObject wrong;
-
-    // Start is called before the first frame update
+    Container situ;
+    
     public void Start()
     {
-        
-    }
+        situ = GameObject.Find("Situation").GetComponent<Container>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Invoke("Nanip2", 4);
     }
 
     void Nanip2()
     {
-        rectangle.SetActive(true);
         Invoke("ShowAlphabet1", 1);
     }
 
     void ShowAlphabet1()
     {
-        //점으로 이루어진 E 보여주는 코드
+        //점으로 이루어진 L 보여주는 코드
 
-        //동작 검사하는 코드
-        //if(알맞게 동작) {
-        //      correct.SetActive(true);
+        //while(true) {
+        //      if(알맞게 동작 인식) {
+        //          correct.SetActive(true);
+        //          break;
+        //      }
+        //      else {
+        //          wrong.SetActive(true);
+        //          break;
+        //      }
         //}
-        //else {
-        //      wrong.SetActive(true);
-        //}
+
+        Invoke("ShowAlphabet2", 2);
 
     }
 
@@ -55,15 +54,18 @@ public class NanIp2 : MonoBehaviour
     {
         //점으로 이루어진 V 보여주는 코드
 
-        //동작 검사하는 코드
-        //if(알맞게 동작) {
-        //      correct.SetActive(true);
-        //}
-        //else {
-        //      wrong.SetActive(true);
+        //while(true) {
+        //      if(알맞게 동작 인식) {
+        //          correct.SetActive(true);
+        //          break;
+        //      }
+        //      else {
+        //          wrong.SetActive(true);
+        //          break;
+        //      }
         //}
 
+        situ.situation = "RD3REAL";
     }
-
-    //종료하면서 고양이 상태변수 RND3REAL으로 변경
+    
 }

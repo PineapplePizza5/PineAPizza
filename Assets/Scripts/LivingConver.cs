@@ -21,6 +21,10 @@ public class LivingConver : MonoBehaviour
     public GameObject ConversationMark;
     public GameObject ConversationText;
     public GameObject CharacterText;
+    public GameObject YesButton;
+    public GameObject NoButton;
+    public GameObject hintButton;
+    public GameObject keyButton;
     public Text ConverText;
     public Text CharText;
 
@@ -56,6 +60,18 @@ public class LivingConver : MonoBehaviour
         
         // 2초마다 DoConversation함수 호출
         InvokeRepeating("DoConversation", 0, 2);
+
+        if(selectCharac == "CAT")
+        {
+            YesButton.SetActive(true);
+            NoButton.SetActive(true);
+        }
+        else if (selectCharac == "MOM1")
+        {
+            hintButton.SetActive(true);
+            keyButton.SetActive(true);
+        }
+        
     }
 
     void DoConversation()

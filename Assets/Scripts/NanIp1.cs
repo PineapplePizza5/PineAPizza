@@ -15,12 +15,16 @@ using UnityEngine;
 
 public class NanIp1 : MonoBehaviour
 {
+    public GameObject sliced;
+    //public GameObject E
+    //public GameObject O
     public GameObject correct;
     public GameObject wrong;
     Container situ;
     
     public void Start()
     {
+        sliced.SetActive(false);
         situ = GameObject.Find("Situation").GetComponent<Container>();
 
         Invoke("Nanip2", 4);
@@ -52,6 +56,7 @@ public class NanIp1 : MonoBehaviour
 
     void ShowAlphabet2()
     {
+        //점으로 이루어진 E 비활성화
         //점으로 이루어진 O 보여주는 코드
 
         //while(true) {

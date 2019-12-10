@@ -22,6 +22,7 @@ public class Round1Real : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        ingredient2.SetActive(false);
         situ = GameObject.Find("Situation").GetComponent<Container>();
 
         Invoke("Round1real", 4);

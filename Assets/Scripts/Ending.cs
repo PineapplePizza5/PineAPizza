@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class Ending : MonoBehaviour
 {
     Container situ;
-    public int yeah = 3;    //최종 시험에서 성공한 단계 수(임시로 3으로 초기화, 수정 필요!)
+    public int yeah = 0;    //최종 시험에서 성공한 단계 수
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         situ = GameObject.Find("Situation").GetComponent<Container>();
         

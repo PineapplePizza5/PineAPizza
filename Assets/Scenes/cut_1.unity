@@ -254,8 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 51755095}
-  mario: {fileID: 532570446}
 --- !u!114 &51755101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,8 +400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 141129247}
-  mario: {fileID: 532570446}
 --- !u!114 &141129253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,8 +546,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 197784375}
-  mario: {fileID: 532570446}
 --- !u!114 &197784381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -698,8 +692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 330328967}
-  mario: {fileID: 532570446}
 --- !u!114 &330328973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -846,8 +838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 426686168}
-  mario: {fileID: 532570446}
 --- !u!114 &426686174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,8 +984,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 450751243}
-  mario: {fileID: 532570446}
 --- !u!114 &450751249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1069,8 +1057,8 @@ GameObject:
   - component: {fileID: 532570451}
   - component: {fileID: 532570450}
   - component: {fileID: 532570449}
-  - component: {fileID: 532570448}
   - component: {fileID: 532570447}
+  - component: {fileID: 532570448}
   m_Layer: 0
   m_Name: mario (2)
   m_TagString: mario
@@ -1108,11 +1096,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 532570446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa86882783382e49adc57219ee227a5, type: 3}
+  m_Script: {fileID: 11500000, guid: f87201255755c884290d6055ae3c1bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  distanceFromCamera: 5
 --- !u!61 &532570449
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6032,8 +6018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 1037526721}
-  mario: {fileID: 532570446}
 --- !u!114 &1037526727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6180,8 +6164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 1455866511}
-  mario: {fileID: 532570446}
 --- !u!114 &1455866517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6328,8 +6310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 1508101172}
-  mario: {fileID: 532570446}
 --- !u!114 &1508101178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6476,8 +6456,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 1621622212}
-  mario: {fileID: 532570446}
 --- !u!114 &1621622218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6624,8 +6602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 1624830754}
-  mario: {fileID: 532570446}
 --- !u!114 &1624830760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6772,8 +6748,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 1842842539}
-  mario: {fileID: 532570446}
 --- !u!114 &1842842545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6920,8 +6894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 1865533482}
-  mario: {fileID: 532570446}
 --- !u!114 &1865533488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7068,8 +7040,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 1957738251}
-  mario: {fileID: 532570446}
 --- !u!114 &1957738257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7216,8 +7186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 2036611229}
-  mario: {fileID: 532570446}
 --- !u!114 &2036611235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7364,8 +7332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 2104396844}
-  mario: {fileID: 532570446}
 --- !u!114 &2104396850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7594,8 +7560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5612113a536ef4fa61aebbf688847c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a1: {fileID: 2135381724}
-  mario: {fileID: 532570446}
 --- !u!114 &2135381730
 MonoBehaviour:
   m_ObjectHideFlags: 0

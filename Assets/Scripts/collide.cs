@@ -21,6 +21,12 @@ public class collide : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if (BodySourceManager.hit_count == 10)
+        {
+            BodySourceManager.check = 0; // check가 0이면 성공한 것, 0 아니면 실패한것. BodySourceManager.cs에 들어있는 전역변수입니다
+        }
+        BodySourceManager.hit_count++;
         print("충돌");
         Destroy(a1);
 

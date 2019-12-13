@@ -2,7 +2,7 @@
  * 프로그램 명 : LivingConver.cs
  * 작성자 : 이송이 (류서현, 신은지, 최세화, 최은정, 홍예지)
  * 최조 작성일 : 2019년 12월 04일
- * 최종 작성일 : 2019년 12월 06일
+ * 최종 작성일 : 2019년 12월 13일
  * 프로그램 설명 : 파일 입출력으로 Livingroom Scene에 맞는 대화를 불러온 뒤
  *                      게임 화면에 대화 형식으로 보여준다.
  * *************************************************************** */
@@ -28,11 +28,13 @@ public class LivingConver : MonoBehaviour
     public Text ConverText;
     public Text CharText;
 
+    SceneController scene;
     Container situ;
+    CameraMove cameraMoving;
     // initialize text file's path
     private string sceneData;
 
-    private bool isPrint = false;
+
     private TextAsset data;
     private StringReader reader;
     private string buff = "";
@@ -41,6 +43,8 @@ public class LivingConver : MonoBehaviour
     {
         // 어느 상황인지 고양이에 저장된 컴포넌트에서 SceneData불러오기.
         situ = GameObject.Find("Situation").GetComponent<Container>();
+        scene = GameObject.Find("SceneController").GetComponent<SceneController>();
+        cameraMoving = GameObject.Find("Main Camera").GetComponent<CameraMove>();
         sceneData = situ.situation;
     }
 
@@ -58,20 +62,51 @@ public class LivingConver : MonoBehaviour
         buff = reader.ReadLine();
         Debug.Log(buff); // 현재 상황을 Console에 표시
         
-        // 2초마다 DoConversation함수 호출
+        // 1초마다 DoConversation함수 호출
         InvokeRepeating("DoConversation", 0, 2);
 
-        if(selectCharac == "CAT")
+        // 캐릭터 선택시 메뉴버튼 활성화
+        if (selectCharac == "CAT")
         {
-            YesButton.SetActive(true);
-            NoButton.SetActive(true);
+            Invoke("CatClick", 2);
         }
         else if (selectCharac == "MOM1")
         {
-            hintButton.SetActive(true);
-            keyButton.SetActive(true);
+            Invoke("Mom1Click", 2);
         }
-        
+        else if (selectCharac == "MOM2")
+        {
+            Invoke("Mom2Click", 6);
+        }
+        else if (selectCharac == "MOM3")
+        {
+            Invoke("Mom3Click", 8);
+        }
+    }
+
+    void CatClick()
+    {
+        YesButton.SetActive(true);
+        NoButton.SetActive(true);
+    }
+    void Mom1Click()
+    {
+        hintButton.SetActive(true);
+        keyButton.SetActive(true);
+    }
+    void Mom2Click()
+    {
+        scene.SceneLoad("Tutorial");
+    }
+    void Mom3Click()
+    {
+        /// 동작 다시 보여주기 해야함......!
+        Invoke("ReLiving", 1);
+    }
+    void ReLiving()
+    {
+        //메인카메라에서 리스타트카메라 부르기
+        cameraMoving.ResetCamera();
     }
 
     void DoConversation()
@@ -85,7 +120,6 @@ public class LivingConver : MonoBehaviour
             if(values.Length == 0)
             {
                 reader.Close();
-                isPrint = true;
                 return;
             }
             // 대화창을 활성화한다.
@@ -112,5 +146,13 @@ public class LivingConver : MonoBehaviour
         ConversationMark.SetActive(false);
         ConversationText.SetActive(false);
         CharacterText.SetActive(false);
+    }
+
+    public void ButtonClicked()
+    {
+        YesButton.SetActive(false);
+        NoButton.SetActive(false);
+        hintButton.SetActive(false);
+        keyButton.SetActive(false);
     }
 }

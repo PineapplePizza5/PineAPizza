@@ -28,8 +28,7 @@ public class Conversation : MonoBehaviour
     Container situ;
     // initialize text file's path
     private string sceneData;
-
-    private bool isPrint = false;
+    
     private TextAsset data;
     private StringReader reader;
     private string buff = "";
@@ -66,7 +65,6 @@ public class Conversation : MonoBehaviour
             if (values.Length == 0)
             {
                 reader.Close();
-                isPrint = true;
                 return;
             }
             // 대화창을 활성화한다.

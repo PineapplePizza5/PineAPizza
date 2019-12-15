@@ -29,7 +29,7 @@ public class RoundFlow : MonoBehaviour
     Container situ;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         prac1 = GameObject.Find("Canvass").GetComponent<Round1Prac>();
         real1 = GameObject.Find("Canvass").GetComponent<Round1Real>();
@@ -47,10 +47,11 @@ public class RoundFlow : MonoBehaviour
 
         situ = GameObject.Find("Situation").GetComponent<Container>();
 
+        Invoke("Wow", 1);
     }
 
     // Update is called once per frame
-    void Update()
+    void Wow()
     {
         switch (situ.situation) {
           case "RD1PRAC":
@@ -59,6 +60,10 @@ public class RoundFlow : MonoBehaviour
         
           case "RD1REAL":
             real1.Start();
+            break;
+           
+          case "NANIP2":
+            nanIp2.Start();
             break;
         
           case "RD2PRAC":
@@ -72,28 +77,21 @@ public class RoundFlow : MonoBehaviour
           case "RD3PRAC":
             prac3.Start();
             break;
-        
-          case "RD3REAL":
-            real3.Start();
-            break;
-        
+
           case "NANIP1":
             nanIp1.Start();
             break;
-        
-          case "NANIP2":
-            nanIp2.Start();
+
+          case "RD3REAL":
+            real3.Start();
             break;
         
           case "FINAL":
             final.Start();
             break;
 
-          case "END":
-              //씬을 엔딩 씬으로 변경
-
-            default:
-              break;
+          default:
+            break;
         }
 
 

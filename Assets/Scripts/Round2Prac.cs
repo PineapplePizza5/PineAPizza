@@ -4,6 +4,8 @@
  * 최조 작성일 : 2019년 12월 02일
  * 최종 작성일 : 2019년 12월 07일
  * 프로그램 설명 : Round2의 연습 단계에 알맞게 창을 구성한다.
+ * 프로그램 흐름 : 도형1 출력(한번에)-> 맞을 때까지 검사 -> 맞으면 o 출력
+ *             -> 도형2 출력(한번에)-> 맞을 때까지 검사 -> 맞으면 o 출력
  * *************************************************************** */
 
 using System.Collections;
@@ -12,17 +14,25 @@ using UnityEngine;
 
 public class Round2Prac : MonoBehaviour
 {
-    public GameObject topping1;
-    public GameObject topping2;
+    RoundFlow roundf;
+
+    public GameObject mario;
+    public GameObject[] top1;
+    public GameObject[] top2;
+
     public GameObject correct;
     public GameObject wrong;
     Container situ;
 
     public void Start()
     {
-        situ = GameObject.Find("Situation").GetComponent<Container>();
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
 
-        Invoke("Round2prac", 8);
+        roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
+        situ = GameObject.Find("Situation").GetComponent<Container>();
+        mario.SetActive(true);
+        Invoke("Round2prac", 4);
 
     }
 
@@ -33,36 +43,76 @@ public class Round2Prac : MonoBehaviour
 
     void ShowShape1()
     {
-        topping1.SetActive(true);
+        for (int i = 0; i < 13; i++)
+        {
+            top1[i].SetActive(true);
+        }
 
-        //while (true)
-        //{
-        //    if(알맞은 동작 인식) {
-        //          correct.SetActive(true);
-        //          break;
-        //    }
-        //}
+        Invoke("DoCheck1", 1);
+    }
 
-        Invoke("ShowShape2", 2);
+    void DoCheck1()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            Invoke("ShowShape2", 2);
+        }
+        else
+        {
+            Invoke("DoCheck1", 0);
+        }
     }
 
     void ShowShape2()
     {
         correct.SetActive(false);
-        topping1.SetActive(false);
+        for (int i = 0; i < 13; i++)
+        {
+            if (top1[i] != null)
+            {
+                top1[i].SetActive(false);
+            }
 
-        topping2.SetActive(true);
+        }
 
-        //while (true)
-        //{
-        //    if(알맞은 동작 인식) {
-        //          correct.SetActive(true);
-        //          break;
-        //    }
-        //}
+        for (int i = 0; i < 17; i++)
+        {
+            top2[i].SetActive(true);
+        }
 
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        Invoke("DoCheck2", 1);
+
+    }
+
+    void DoCheck2()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            Invoke("GoNext", 2);
+        }
+        else
+        {
+            Invoke("DoCheck2", 0);
+        }
+    }
+
+    void GoNext()
+    {
+        for (int i = 0; i < 17; i++)
+        {
+            if (top2[i] != null)
+            {
+                top2[i].SetActive(false);
+            }
+
+        }
         situ.situation = "RD2REAL";
-
+        roundf.Start();
     }
 
 }

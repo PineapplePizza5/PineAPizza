@@ -12,9 +12,13 @@ using UnityEngine;
 
 public class Round2Real : MonoBehaviour
 {
-    public GameObject toppedPizza;
-    public GameObject topping1;
-    public GameObject topping2;
+    RoundFlow roundf;
+
+    public GameObject mario;
+    public GameObject[] top1;
+    public GameObject[] top2;
+
+    public GameObject topped;
     public GameObject correct;
     public GameObject wrong;
     Container situ;
@@ -22,65 +26,114 @@ public class Round2Real : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
+        
+        correct.SetActive(false);
 
         Invoke("Round2real", 4);
     }
 
-    void Round2real ()
+    void Round2real()
     {
         Invoke("ShowShape1", 1);
     }
 
     void ShowShape1()
     {
-        topping1.SetActive(true);
+        for (int i = 0; i < 13; i++)
+        {
+            top1[i].SetActive(true);
+        }
 
-        //while (true)
+        Invoke("DoCheck1", 1);
+    }
+
+    void DoCheck1()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            Invoke("ShowShape2", 2);
+        }
+
+        //else if(남은시간 < 0)
         //{
-        //    if(알맞은 동작 인식) {
-        //          correct.SetActive(true);
-        //          break;
-        //    }
-        //    else if(남은시간 < 0) {
-        //          wrong.SetActive(true);
-        //          break;
-        //    }
+        //    wrong.SetActive(true);
+        //    Invoke("ShowShape2", 2);
         //}
 
-        Invoke("ShowShape2", 2);
+        else
+        {
+            Invoke("DoCheck1", 0);
+        }
     }
 
     void ShowShape2()
     {
         correct.SetActive(false);
         wrong.SetActive(false);
-        topping1.SetActive(false);
 
-        topping2.SetActive(true);
+        for (int i = 0; i < 13; i++)
+        {
+            if (top1[i] != null)
+            {
+                top1[i].SetActive(false);
+            }
 
-        //while (true)
-        //{
-        //    if(알맞은 동작 인식) {
-        //          correct.SetActive(true);
-        //          break;
-        //    }
-        //    else if(남은시간 < 0) {
-        //          wrong.SetActive(true);
-        //          break;
-        //    }
-        //}
+        }
 
-        Invoke("ShowToppedPizza", 2);
+        for (int i = 0; i < 17; i++)
+        {
+            top2[i].SetActive(true);
+        }
+
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        Invoke("DoCheck2", 1);
 
     }
 
-    void ShowToppedPizza()
+    void DoCheck2()
     {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            Invoke("ShowTopped", 2);
+        }
+
+        //else if(남은시간 < 0)
+        //{
+        //    wrong.SetActive(true);
+        //    Invoke("ShowShape2", 2);
+        //}
+
+        else
+        {
+            Invoke("DoCheck2", 0);
+        }
+    }
+
+    void ShowTopped()
+    {
+        for (int i = 0; i < 17; i++)
+        {
+            if (top2[i] != null)
+            {
+                top2[i].SetActive(false);
+            }
+
+        }
         correct.SetActive(false);
         wrong.SetActive(false);
 
-        toppedPizza.SetActive(true);
+        topped.SetActive(true);
         situ.situation = "RD3PRAC";
+        roundf.Start();
     }
+
 }

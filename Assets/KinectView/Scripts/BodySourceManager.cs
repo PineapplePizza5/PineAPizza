@@ -8,7 +8,7 @@ public class BodySourceManager : MonoBehaviour
     private BodyFrameReader _Reader;
     private Body[] _Data = null;
     public static int hit_count = 0; // 게임에서 몇개 성공했는지 체크
-    public static int check = 0; // 게임 성공햇는지 체크 
+    public static int check = 1; // 게임 성공햇는지 체크 
 
     public Body[] GetData()
     {

@@ -15,18 +15,26 @@ using UnityEngine;
 
 public class NanIp1 : MonoBehaviour
 {
+    RoundFlow roundf;
+
+    public GameObject mario;
+    public GameObject[] nan1;
+    public GameObject[] nan2;
+
     public GameObject sliced;
-    //public GameObject E
-    //public GameObject O
     public GameObject correct;
     public GameObject wrong;
     Container situ;
     
     public void Start()
     {
-        sliced.SetActive(false);
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
 
+        sliced.SetActive(false);
         Invoke("Nanip2", 4);
     }
 
@@ -37,40 +45,95 @@ public class NanIp1 : MonoBehaviour
 
     void ShowAlphabet1()
     {
-        //점으로 이루어진 E 보여주는 코드
+        for (int i = 0; i < 13; i++)
+        {
+            nan1[i].SetActive(true);
+        }
 
-        //while(true) {
-        //      if(알맞게 동작 인식) {
-        //          correct.SetActive(true);
-        //          break;
-        //      }
-        //      else {
-        //          wrong.SetActive(true);
-        //          break;
-        //      }
+        Invoke("DoCheck1", 1);
+
+    }
+
+    void DoCheck1()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            Invoke("ShowAlphabet2", 2);
+        }
+
+        //else if(남은시간 < 0)
+        //{
+        //    wrong.SetActive(true);
+        //    Invoke("ShowAlphabet2", 2);
         //}
 
-        Invoke("ShowAlphabet2", 2);
-
+        else
+        {
+            Invoke("DoCheck1", 0);
+        }
     }
 
     void ShowAlphabet2()
     {
-        //점으로 이루어진 E 비활성화
-        //점으로 이루어진 O 보여주는 코드
+        correct.SetActive(false);
+        wrong.SetActive(false);
 
-        //while(true) {
-        //      if(알맞게 동작 인식) {
-        //          correct.SetActive(true);
-        //          break;
-        //      }
-        //      else {
-        //          wrong.SetActive(true);
-        //          break;
-        //      }
-        //}
+        for (int i = 0; i < 13; i++)
+        {
+            if (nan1[i] != null)
+            {
+                nan1[i].SetActive(false);
+            }
 
-        situ.situation = "RD2PRAC";
+        }
+
+        for (int i = 0; i < 10; i++)
+        {
+            nan2[i].SetActive(true);
+        }
+
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        Invoke("DoCheck2", 1);
+
+        
     }
 
+    void DoCheck2()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            Invoke("GoNext", 2);
+        }
+
+        //else if(남은시간 < 0)
+        //{
+        //    wrong.SetActive(true);
+        //    Invoke("ShowShape2", 2);
+        //}
+
+        else
+        {
+            Invoke("DoCheck2", 0);
+        }
+    }
+
+    void GoNext()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            if (nan2[i] != null)
+            {
+                nan2[i].SetActive(false);
+            }
+
+        }
+        correct.SetActive(false);
+
+        situ.situation = "RD2PRAC";
+        roundf.Start();
+    }
 }

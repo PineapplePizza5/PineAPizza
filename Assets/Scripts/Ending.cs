@@ -28,11 +28,11 @@ public class Ending : MonoBehaviour
                 break;
             
         }
+        Wow();
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void Wow()
     {
         switch (situ.situation)
         {

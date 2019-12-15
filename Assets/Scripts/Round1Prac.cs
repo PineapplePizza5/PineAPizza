@@ -14,18 +14,23 @@ using UnityEngine;
 
 public class Round1Prac : MonoBehaviour
 {
-    public GameObject ingredient1;
-    public GameObject ingredient2;
+    RoundFlow roundf;
+
+    public GameObject mario;
+    public GameObject[] cut1;
+    public GameObject[] cut2;
+
     public GameObject correct;
     public GameObject wrong;
     Container situ;
-    
+
     public void Start()
     {
+        roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
-        
-        Invoke("Round1prac", 8);
-        
+        mario.SetActive(true);
+        Invoke("Round1prac", 7);
+
     }
 
     void Round1prac()
@@ -35,36 +40,76 @@ public class Round1Prac : MonoBehaviour
 
     void ShowShape1()
     {
-        ingredient1.SetActive(true);
+        for (int i = 0; i < 17; i++)
+        {
+            cut1[i].SetActive(true);
+        }
 
-        //while (true)
-        //{
-        //    if(알맞은 동작 인식) {
-        //          correct.SetActive(true);
-        //          break;
-        //    }
-        //}
+        Invoke("DoCheck1", 1);
+    }
 
-        Invoke("ShowShape2", 2);
+    void DoCheck1()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            Invoke("ShowShape2", 2);
+        }
+        else
+        {
+            Invoke("DoCheck1", 0);
+        }
     }
 
     void ShowShape2()
     {
         correct.SetActive(false);
-        ingredient1.SetActive(false);
-        
-        ingredient2.SetActive(true);
+        for (int i = 0; i < 17; i++)
+        {
+            if (cut1[i] != null)
+            {
+                cut1[i].SetActive(false);
+            }
 
-        //while (true)
-        //{
-        //    if(알맞은 동작 인식) {
-        //          correct.SetActive(true);
-        //          break;
-        //    }
-        //}
+        }
 
+        for (int i = 0; i < 13; i++)
+        {
+            cut2[i].SetActive(true);
+        }
+
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        Invoke("DoCheck2", 1);
+
+    }
+
+    void DoCheck2()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            Invoke("GoNext", 2);
+        }
+        else
+        {
+            Invoke("DoCheck2", 0);
+        }
+    }
+
+    void GoNext()
+    {
+        for (int i = 0; i < 13; i++)
+        {
+            if (cut2[i] != null)
+            {
+                cut2[i].SetActive(false);
+            }
+
+        }
         situ.situation = "RD1REAL";
-
+        roundf.Start();
     }
 
 }

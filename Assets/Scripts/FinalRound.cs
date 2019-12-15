@@ -11,18 +11,20 @@ using UnityEngine;
 
 public class FinalRound : MonoBehaviour
 {
-    public GameObject ingredient1;
-    public GameObject ingredient2;
+    RoundFlow roundf;
+
+    public GameObject[] cut1;
+    public GameObject[] cut2;
     public GameObject sliced;
 
-    public GameObject topping1;
-    public GameObject topping2;
-    public GameObject toppedPizza;
+    public GameObject[] top1;
+    public GameObject[] top2;
+    public GameObject topped;
 
     public GameObject oven;
-    public GameObject fire1;
-    public GameObject fire2;
-    public GameObject perfectPizza;
+    public GameObject[] fir1;
+    public GameObject[] fir2;
+    public GameObject perfect;
 
     public GameObject correct;
     public GameObject wrong;
@@ -33,108 +35,330 @@ public class FinalRound : MonoBehaviour
 
     public void Start()
     {
-        situ = GameObject.Find("Situation").GetComponent<Container>();
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
         endi = GameObject.Find("Canvass").GetComponent<Ending>();
+        roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
+        situ = GameObject.Find("Situation").GetComponent<Container>();
 
+        perfect.SetActive(false);
+        correct.SetActive(false);
 
+        Invoke("RoundFinal", 6);
+    }
+
+    void RoundFinal()
+    {
+        Invoke("Round1Shape1", 1);
     }
 
     void Round1Shape1()
     {
-        ingredient1.SetActive(true);
+        for (int i = 0; i < 17; i++)
+        {
+            cut1[i].SetActive(true);
+        }
 
-        //while (true)
+        Invoke("DoCheck11", 1);
+    }
+
+    void DoCheck11()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            succeed1++;
+            Invoke("Round1Shape2", 2);
+        }
+
+        //else if(남은시간 < 0)
         //{
-        //    if(알맞은 동작 인식) {
-        //          correct.SetActive(true);
-        //          succeed1++;
-        //          break;
-        //    }
-        //    else if(남은시간 < 0) {
-        //          wrong.SetActive(true);
-        //          break;
-        //    }
+        //    wrong.SetActive(true);
+        //    Invoke("Round1Shape2", 2);
         //}
 
-        Invoke("Round1ShowShape2", 2);
+        else
+        {
+            Invoke("DoCheck11", 0);
+        }
     }
 
     void Round1Shape2()
     {
         correct.SetActive(false);
         wrong.SetActive(false);
-        ingredient1.SetActive(false);
 
-        ingredient2.SetActive(true);
+        for (int i = 0; i < 17; i++)
+        {
+            if (cut1[i] != null)
+            {
+                cut1[i].SetActive(false);
+            }
 
-        //while (true)
-        //{
-        //    if(알맞은 동작 인식) {
-        //          correct.SetActive(true);
-        //          succeed1++;
-        //          break;
-        //    }
-        //    else if(남은시간 < 0) {
-        //          wrong.SetActive(true);
-        //          break;
-        //    }
-        //}
+        }
 
-        Invoke("Round1ShowSliced", 2);
+        for (int i = 0; i < 13; i++)
+        {
+            cut2[i].SetActive(true);
+        }
+
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        Invoke("DoCheck12", 1);
+
     }
 
-    void Round1ShowSliced()
+    void DoCheck12()
     {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            succeed1++;
+            Invoke("ShowSliced", 2);
+        }
+
+        //else if(남은시간 < 0)
+        //{
+        //    wrong.SetActive(true);
+        //    Invoke("Round2Shape2", 2);
+        //}
+
+        else
+        {
+            Invoke("DoCheck12", 0);
+        }
+    }
+
+    void ShowSliced()
+    {
+        for (int i = 0; i < 13; i++)
+        {
+            if (cut2[i] != null)
+            {
+                cut2[i].SetActive(false);
+            }
+
+        }
         correct.SetActive(false);
         wrong.SetActive(false);
-
+        
         sliced.SetActive(true);
 
         if (succeed1 == 2)  //두 주문 모두 성공한 경우 1라운드 성공
         {
             endi.yeah++;
         }
+        Invoke("Round2Shape1", 2);
     }
 
 
 
     void Round2Shape1()
     {
+        sliced.SetActive(false);
 
+        for (int i = 0; i < 13; i++)
+        {
+            top1[i].SetActive(true);
+        }
+
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        Invoke("DoCheck21", 1);
+    }
+
+    void DoCheck21()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            succeed2++;
+            Invoke("Round2Shape2", 2);
+        }
+
+        //else if(남은시간 < 0)
+        //{
+        //    wrong.SetActive(true);
+        //    Invoke("Round2Shape2", 2);
+        //}
+
+        else
+        {
+            Invoke("DoCheck21", 0);
+        }
     }
 
     void Round2Shape2()
     {
+        correct.SetActive(false);
+        wrong.SetActive(false);
+
+        for (int i = 0; i < 13; i++)
+        {
+            if (top1[i] != null)
+            {
+                top1[i].SetActive(false);
+            }
+
+        }
+
+        for (int i = 0; i < 17; i++)
+        {
+            top2[i].SetActive(true);
+        }
+
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        Invoke("DoCheck22", 1);
 
     }
 
-    void Round2ShowTopped()
+    void DoCheck22()
     {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            succeed2++;
+            Invoke("ShowTopped", 2);
+        }
 
+        //else if(남은시간 < 0)
+        //{
+        //    wrong.SetActive(true);
+        //    Invoke("Round3Shape1", 2);
+        //}
+
+        else
+        {
+            Invoke("DoCheck22", 0);
+        }
+    }
+
+    void ShowTopped()
+    {
+        for (int i = 0; i < 17; i++)
+        {
+            if (top2[i] != null)
+            {
+                top2[i].SetActive(false);
+            }
+
+        }
+        correct.SetActive(false);
+        wrong.SetActive(false);
+
+        topped.SetActive(true);
 
         if (succeed2 == 2)  //두 주문 모두 성공한 경우 2라운드 성공
         {
             endi.yeah++;
         }
-
+        Invoke("Round3Shape1", 2);
     }
 
 
 
     void Round3Shape1()
     {
+        topped.SetActive(false);
+        oven.SetActive(true);
+        for (int i = 0; i < 18; i++)
+        {
+            fir1[i].SetActive(true);
+        }
 
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        Invoke("DoCheck31", 1);
+    }
+
+    void DoCheck31()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            succeed3++;
+            Invoke("Round3Shape2", 2);
+        }
+
+        //else if(남은시간 < 0)
+        //{
+        //    wrong.SetActive(true);
+        //    Invoke("Round3Shape2", 2);
+        //}
+
+        else
+        {
+            Invoke("DoCheck31", 0);
+        }
     }
 
     void Round3Shape2()
     {
+        correct.SetActive(false);
+        wrong.SetActive(false);
+
+        for (int i = 0; i < 18; i++)
+        {
+            if (fir1[i] != null)
+            {
+                fir1[i].SetActive(false);
+            }
+
+        }
+
+        for (int i = 0; i < 21; i++)
+        {
+            fir2[i].SetActive(true);
+        }
+
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        Invoke("DoCheck32", 1);
 
     }
 
-    void Round3ShowPerfect()
+    void DoCheck32()
     {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            succeed3++;
+            Invoke("ShowPerfect", 2);
+        }
 
+        //else if(남은시간 < 0)
+        //{
+        //    wrong.SetActive(true);
+        //    Invoke("Round3Shape2", 2);
+        //}
 
+        else
+        {
+            Invoke("DoCheck32", 0);
+        }
+    }
+
+    void ShowPerfect()
+    {
+        for (int i = 0; i < 21; i++)
+        {
+            if (fir2[i] != null)
+            {
+                fir2[i].SetActive(false);
+            }
+
+        }
+        correct.SetActive(false);
+        wrong.SetActive(false);
+
+        perfect.SetActive(true);
 
         if (succeed3 == 2)  //두 주문 모두 성공한 경우 3라운드 성공
         {
@@ -142,7 +366,6 @@ public class FinalRound : MonoBehaviour
         }
 
         endi.Start();   //엔딩조건에 따라 다른 엔딩 불러오는 Ending.cs 호출
-
     }
 
 }

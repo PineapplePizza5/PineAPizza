@@ -12,9 +12,13 @@ using UnityEngine;
 
 public class Round1Real : MonoBehaviour
 {
+    RoundFlow roundf;
+
+    public GameObject mario;
+    public GameObject[] cut1;
+    public GameObject[] cut2;
+
     public GameObject sliced;
-    public GameObject ingredient1;
-    public GameObject ingredient2;
     public GameObject correct;
     public GameObject wrong;
     Container situ;
@@ -22,9 +26,21 @@ public class Round1Real : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        ingredient2.SetActive(false);
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
 
+        for (int i = 0; i < 13; i++)
+        {
+            if (cut2[i] != null)
+            {
+                cut2[i].SetActive(false);
+            }
+        }
+        correct.SetActive(false);
+        
         Invoke("Round1real", 4);
     }
 
@@ -35,54 +51,96 @@ public class Round1Real : MonoBehaviour
 
     void ShowShape1()
     {
-        ingredient1.SetActive(true);
+        for (int i = 0; i < 17; i++)
+        {
+            cut1[i].SetActive(true);
+        }
 
-        //while (true)
+        Invoke("DoCheck1", 1);
+    }
+
+    void DoCheck1()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            Invoke("ShowShape2", 2);
+        }
+
+        //else if(남은시간 < 0)
         //{
-        //    if(알맞은 동작 인식) {
-        //          correct.SetActive(true);
-        //          break;
-        //    }
-        //    else if(남은시간 < 0) {
-        //          wrong.SetActive(true);
-        //          break;
-        //    }
+        //    wrong.SetActive(true);
+        //    Invoke("ShowShape2", 2);
         //}
 
-        Invoke("ShowShape2", 2);
+        else
+        {
+            Invoke("DoCheck1", 0);
+        }
     }
 
     void ShowShape2()
     {
         correct.SetActive(false);
         wrong.SetActive(false);
-        ingredient1.SetActive(false);
 
-        ingredient2.SetActive(true);
+        for (int i = 0; i < 17; i++)
+        {
+            if (cut1[i] != null)
+            {
+                cut1[i].SetActive(false);
+            }
 
-        //while (true)
+        }
+
+        for (int i = 0; i < 13; i++)
+        {
+            cut2[i].SetActive(true);
+        }
+
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        Invoke("DoCheck2", 1);
+
+    }
+
+    void DoCheck2()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            Invoke("ShowSliced", 2);
+        }
+
+        //else if(남은시간 < 0)
         //{
-        //    if(알맞은 동작 인식) {
-        //          correct.SetActive(true);
-        //          break;
-        //    }
-        //    else if(남은시간 < 0) {
-        //          wrong.SetActive(true);
-        //          break;
-        //    }
+        //    wrong.SetActive(true);
+        //    Invoke("ShowShape2", 2);
         //}
 
-        Invoke("ShowSliced", 2);
-
+        else
+        {
+            Invoke("DoCheck2", 0);
+        }
     }
 
     void ShowSliced()
     {
+        for (int i = 0; i < 13; i++)
+        {
+            if (cut2[i] != null)
+            {
+                cut2[i].SetActive(false);
+            }
+
+        }
         correct.SetActive(false);
         wrong.SetActive(false);
 
         sliced.SetActive(true);
         situ.situation = "NANIP1";
+        roundf.Start();
     }
 
 }

@@ -12,9 +12,13 @@ using UnityEngine;
 
 public class Round3Real : MonoBehaviour
 {
-    public GameObject perfectPizza;
-    public GameObject fire1;
-    public GameObject fire2;
+    RoundFlow roundf;
+
+    public GameObject mario;
+    public GameObject[] fir1;
+    public GameObject[] fir2;
+
+    public GameObject perfect;
     public GameObject correct;
     public GameObject wrong;
     Container situ;
@@ -22,9 +26,15 @@ public class Round3Real : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
 
-        Invoke("Round3real", 4);
+        correct.SetActive(false);
+
+        Invoke("Round3real", 2);
     }
 
     void Round3real()
@@ -34,53 +44,96 @@ public class Round3Real : MonoBehaviour
 
     void ShowShape1()
     {
-        fire1.SetActive(true);
+        for (int i = 0; i < 18; i++)
+        {
+            fir1[i].SetActive(true);
+        }
 
-        //while (true)
+        Invoke("DoCheck1", 1);
+    }
+
+    void DoCheck1()
+    {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            Invoke("ShowShape2", 2);
+        }
+
+        //else if(남은시간 < 0)
         //{
-        //    if(알맞은 동작 인식) {
-        //          correct.SetActive(true);
-        //          break;
-        //    }
-        //    else if(남은시간 < 0) {
-        //          wrong.SetActive(true);
-        //          break;
-        //    }
+        //    wrong.SetActive(true);
+        //    Invoke("ShowShape2", 2);
         //}
 
-        Invoke("ShowShape2", 2);
+        else
+        {
+            Invoke("DoCheck1", 0);
+        }
     }
 
     void ShowShape2()
     {
         correct.SetActive(false);
         wrong.SetActive(false);
-        fire1.SetActive(false);
 
-        fire2.SetActive(true);
+        for (int i = 0; i < 18; i++)
+        {
+            if (fir1[i] != null)
+            {
+                fir1[i].SetActive(false);
+            }
 
-        //while (true)
-        //{
-        //    if(알맞은 동작 인식) {
-        //          correct.SetActive(true);
-        //          break;
-        //    }
-        //    else if(남은시간 < 0) {
-        //          wrong.SetActive(true);
-        //          break;
-        //    }
-        //}
+        }
 
-        Invoke("ShowPerfectPizza", 2);
+        for (int i = 0; i < 21; i++)
+        {
+            fir2[i].SetActive(true);
+        }
+
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
+        Invoke("DoCheck2", 1);
 
     }
 
-    void ShowPerfectPizza()
+    void DoCheck2()
     {
+        if (BodySourceManager.check == 0)
+        {
+            correct.SetActive(true);
+            Invoke("ShowPerfect", 2);
+        }
+
+        //else if(남은시간 < 0)
+        //{
+        //    wrong.SetActive(true);
+        //    Invoke("ShowShape2", 2);
+        //}
+
+        else
+        {
+            Invoke("DoCheck2", 0);
+        }
+    }
+
+    void ShowPerfect()
+    {
+        for (int i = 0; i < 21; i++)
+        {
+            if (fir2[i] != null)
+            {
+                fir2[i].SetActive(false);
+            }
+
+        }
         correct.SetActive(false);
         wrong.SetActive(false);
 
-        perfectPizza.SetActive(true);
+        perfect.SetActive(true);
         situ.situation = "FINAL";
+        roundf.Start();
     }
+
 }

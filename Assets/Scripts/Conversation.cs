@@ -33,11 +33,13 @@ public class Conversation : MonoBehaviour
     private StringReader reader;
     private string buff = "";
 
-    private void Awake()
+    public void Awake()
     {
         // 어느 상황인지 고양이에 저장된 컴포넌트에서 SceneData불러오기.
         situ = GameObject.Find("Situation").GetComponent<Container>();
         sceneData = situ.situation;
+
+        Invoke("Start", 0);
     }
 
     // Start is called before the first frame update

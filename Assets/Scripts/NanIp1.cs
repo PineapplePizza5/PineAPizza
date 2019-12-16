@@ -18,6 +18,7 @@ public class NanIp1 : MonoBehaviour
 {
     Countdown countd;
     RoundFlow roundf;
+    Conversation conver;
 
     public GameObject mario;
     public GameObject[] nan1;
@@ -28,16 +29,22 @@ public class NanIp1 : MonoBehaviour
     public GameObject wrong;
     public GameObject countText;
     Container situ;
+    Ending endi;
     
     public void Start()
     {
+        
+
         BodySourceManager.hit_count = 0;
         BodySourceManager.check = 1;
 
+        endi = GameObject.Find("Canvass").GetComponent<Ending>();
         countd = GameObject.Find("Canvas_count").GetComponent<Countdown>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
+        conver = GameObject.Find("Canvas").GetComponent<Conversation>();
 
+        conver.Awake();
         countd.currentTime = 10f;
         sliced.SetActive(false);
         Invoke("Nanip2", 4);
@@ -67,6 +74,7 @@ public class NanIp1 : MonoBehaviour
         {
             countd.enabled = false;
             countText.SetActive(false);
+            endi.hidden++;
             correct.SetActive(true);
             Invoke("ShowAlphabet2", 2);
         }
@@ -122,6 +130,7 @@ public class NanIp1 : MonoBehaviour
         {
             countd.enabled = false;
             countText.SetActive(false);
+            endi.hidden++;
 
             correct.SetActive(true);
             Invoke("GoNext", 2);

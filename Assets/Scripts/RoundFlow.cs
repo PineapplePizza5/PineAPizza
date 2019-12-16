@@ -52,23 +52,20 @@ public class RoundFlow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Wow()
+    void Wow() //라운드를 제어하는 함수
     {
         switch (situ.situation) {
-          case "RD1PRAC":
-            prac1.Start();
+          case "RD1PRAC":       //라운드 1 연습을 수행하는 스크립트 실행
+            prac1.Start(); 
             break;
         
-          case "RD1REAL":
-            real1.Start();
-            break;
-
-          case "RD1GOOD":
+          case "RD1REAL":       //라운드 1 실습을 수행하는 스크립트 실행
+          case "RD1GOOD":      
           case "RD1BAD":
             real1.Start();
             break;
 
-          case "NANIP1":
+          case "NANIP1":        //동생의 난입 1을 수행하는 스크립트 실행
             nanIp1.Start();
             break;
         

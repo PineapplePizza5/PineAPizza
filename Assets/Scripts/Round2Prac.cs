@@ -16,6 +16,7 @@ using UnityEngine.SceneManagement;
 public class Round2Prac : MonoBehaviour
 {
     RoundFlow roundf;
+    Conversation conver;
 
     public GameObject mario;
     public GameObject[] top1;
@@ -25,16 +26,19 @@ public class Round2Prac : MonoBehaviour
     public GameObject wrong;
     Container situ;
 
+    
     public void Start()
     {
         BodySourceManager.hit_count = 0;
         BodySourceManager.check = 1;
 
+        conver = GameObject.Find("Canvas").GetComponent<Conversation>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
         mario.SetActive(true);
         Invoke("Round2prac", 4);
 
+        conver.Awake();
     }
 
     void Round2prac()

@@ -13,6 +13,7 @@ using UnityEngine.SceneManagement;
 
 public class Round3Real : MonoBehaviour
 {
+    Conversation conver;
     Countdown countd;
     RoundFlow roundf;
 
@@ -26,6 +27,8 @@ public class Round3Real : MonoBehaviour
     public GameObject countText;
     Container situ;
 
+    int succeed;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -35,7 +38,9 @@ public class Round3Real : MonoBehaviour
         countd = GameObject.Find("Canvas_count").GetComponent<Countdown>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
+        conver = GameObject.Find("Canvas").GetComponent<Conversation>();
 
+        conver.Awake();
         countd.currentTime = 10f;
         correct.SetActive(false);
 
@@ -66,6 +71,7 @@ public class Round3Real : MonoBehaviour
         {
             countd.enabled = false;
             countText.SetActive(false);
+            succeed++;
 
             correct.SetActive(true);
             Invoke("ShowShape2", 2);
@@ -121,6 +127,8 @@ public class Round3Real : MonoBehaviour
         {
             countd.enabled = false;
             countText.SetActive(false);
+            succeed++;
+
             correct.SetActive(true);
             Invoke("ShowPerfect", 2);
         }
@@ -150,6 +158,17 @@ public class Round3Real : MonoBehaviour
 
         }
 
+        if (succeed == 2)  //두 주문 모두 성공한 경우 3라운드 성공
+        {
+            situ.situation = "RD3GOOD";
+            conver.Awake();
+        }
+        else
+        {
+            situ.situation = "RD3BAD";
+            conver.Awake();
+        }
+
         perfect.SetActive(true);
 
         correct.SetActive(false);
@@ -172,6 +191,12 @@ public class Round3Real : MonoBehaviour
         correct.SetActive(false);
         wrong.SetActive(false);
 
+        Invoke("Oh", 3);
+        
+    }
+    
+    void Oh()
+    {
         situ.situation = "FINAL";
         roundf.Start();
     }

@@ -16,6 +16,7 @@ public class Round1Real : MonoBehaviour
     Countdown countd;
     RoundFlow roundf;
 
+
     public GameObject mario;
     public GameObject[] cut1;
     public GameObject[] cut2;
@@ -25,6 +26,7 @@ public class Round1Real : MonoBehaviour
     public GameObject wrong;
     public GameObject countText;
     Conversation conver;
+    LifeControl lifecon;
 
     int succeed;
 
@@ -36,16 +38,16 @@ public class Round1Real : MonoBehaviour
         BodySourceManager.hit_count = 0;
         BodySourceManager.check = 1;
 
+        lifecon = GameObject.Find("Canvas_life").GetComponent<LifeControl>();
         conver = GameObject.Find("Canvas").GetComponent<Conversation>();
         countd = GameObject.Find("Canvas_count").GetComponent<Countdown>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
 
-        if (situ.situation != "RD1REAL")
-        {
-            Invoke("GoNext", 0);
-        }
-
+        if (lifecon.life == 2) { lifecon.Life1.SetActive(true);lifecon.Life2.SetActive(true); }
+        else if (lifecon.life == 1) { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(true); }
+        
+        conver.Awake();
         countd.currentTime = 15f;
         for (int i = 0; i < 13; i++)
         {
@@ -89,10 +91,33 @@ public class Round1Real : MonoBehaviour
 
         else if (countd.currentTime == 0)   //실패했을 경우
         {
+            Debug.Log("0");
             countd.enabled = false;
+            Debug.Log("a");
             countText.SetActive(false);
+            Debug.Log("bDDDDDDDD");
             wrong.SetActive(true);
-            Invoke("ShowShape2", 2);
+            
+            lifecon.life--;
+
+            Debug.Log("라이프쭌다" + lifecon.life);
+
+            if (lifecon.life == 1)
+            {
+                lifecon.Life1.SetActive(false);
+                lifecon.Life2.SetActive(false);
+                wrong.SetActive(false);
+                SceneManager.LoadScene("LivingRoom");
+
+            }
+            else if (lifecon.life == 0)
+            {
+                lifecon.Life1.SetActive(false);
+                lifecon.Life2.SetActive(false);
+
+                lifecon.life = 2;
+                SceneManager.LoadScene("Menu");
+            }
         }
 
         else
@@ -132,8 +157,10 @@ public class Round1Real : MonoBehaviour
 
     void DoCheck2()
     {
+        Debug.Log("Docheck2 진입");
         if (BodySourceManager.check == 0)   //성공했을 경우
         {
+            Debug.Log("succeed");
             countd.enabled = false;
             countText.SetActive(false);
             correct.SetActive(true);
@@ -143,10 +170,15 @@ public class Round1Real : MonoBehaviour
 
         else if (countd.currentTime == 0)   //실패했을 경우
         {
+            
             countd.enabled = false;
-            countText.SetActive(false);
+            
             wrong.SetActive(true);
-            Invoke("GoNext", 2);
+            
+            lifecon.life--;
+
+            if (lifecon.life == 1) { lifecon.Life1.SetActive(false); SceneManager.LoadScene("LivingRoom"); }
+            else if (lifecon.life == 0) { lifecon.Life2.SetActive(false);SceneManager.LoadScene("Menu"); }
         }
 
         else
@@ -169,12 +201,14 @@ public class Round1Real : MonoBehaviour
         if (succeed == 2)  //두 주문 모두 성공한 경우 1라운드 성공
         {
             situ.situation = "RD1GOOD";
-            SceneManager.LoadScene("TableScene");
+            conver.Awake();
+            //SceneManager.LoadScene("TableScene");
         }
         else
         {
+            conver.Awake();
             situ.situation = "RD1BAD";
-            SceneManager.LoadScene("TableScene");
+            //SceneManager.LoadScene("TableScene");
         }
         sliced.SetActive(true);
         Invoke("GoNext", 2);
@@ -195,13 +229,15 @@ public class Round1Real : MonoBehaviour
         countText.SetActive(false);
 
         correct.SetActive(false);
-        wrong.SetActive(false);
+        wrong.SetActive(false);        
 
-        SceneManager.LoadScene("TableScene");
+        Invoke("Oh", 3);
+    }
 
+    void Oh()
+    {
         situ.situation = "NANIP1";
         roundf.Start();
-        
     }
 
 }

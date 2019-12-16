@@ -16,6 +16,7 @@ using UnityEngine.SceneManagement;
 public class Round3Prac : MonoBehaviour
 {
     RoundFlow roundf;
+    Conversation conver;
 
     public GameObject mario;
     public GameObject[] fir1;
@@ -31,7 +32,9 @@ public class Round3Prac : MonoBehaviour
     {
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
+        conver = GameObject.Find("Canvas").GetComponent<Conversation>();
 
+        conver.Awake();
         topped.SetActive(false);
         oven.SetActive(true);
         mario.SetActive(true);

@@ -15,6 +15,7 @@ public class Round2Real : MonoBehaviour
 {
     Countdown countd;
     RoundFlow roundf;
+    Conversation conver;
 
     public GameObject mario;
     public GameObject[] top1;
@@ -34,9 +35,12 @@ public class Round2Real : MonoBehaviour
         BodySourceManager.hit_count = 0;
         BodySourceManager.check = 1;
 
+        situ = GameObject.Find("Situation").GetComponent<Container>();
+        conver = GameObject.Find("Canvas").GetComponent<Conversation>();
         countd = GameObject.Find("Canvas_count").GetComponent<Countdown>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
 
+        conver.Awake();
         countd.currentTime = 10f;
         correct.SetActive(false);
 
@@ -150,18 +154,16 @@ public class Round2Real : MonoBehaviour
             }
 
         }
-
-        situ = GameObject.Find("Situation").GetComponent<Container>();
-
+        
         if (succeed == 2)  //두 주문 모두 성공한 경우 2라운드 성공
         {
             situ.situation = "RD2GOOD";
-            SceneManager.LoadScene("TableScene");
+            conver.Awake();
         }
         else
         {
             situ.situation = "RD2BAD";
-            SceneManager.LoadScene("TableScene");
+            conver.Awake();
         }
 
         topped.SetActive(true);

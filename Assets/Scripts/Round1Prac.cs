@@ -26,10 +26,11 @@ public class Round1Prac : MonoBehaviour
 
     public void Start()
     {
+        
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
         mario.SetActive(true);
-        Invoke("Round1prac", 7);
+        Invoke("Round1prac", 3);
 
     }
 

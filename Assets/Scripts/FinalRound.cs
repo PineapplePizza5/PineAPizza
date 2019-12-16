@@ -12,6 +12,7 @@ using UnityEngine.SceneManagement;
 
 public class FinalRound : MonoBehaviour
 {
+    Conversation conver;
     Countdown countd;
     RoundFlow roundf;
 
@@ -45,12 +46,14 @@ public class FinalRound : MonoBehaviour
         endi = GameObject.Find("Canvass").GetComponent<Ending>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
+        conver = GameObject.Find("Canvas").GetComponent<Conversation>();
 
-        countd.currentTime = 10f;
+        countd.currentTime = 20f;
         perfect.SetActive(false);
         correct.SetActive(false);
-
-        Invoke("RoundFinal", 6);
+        
+        conver.Awake();
+        Invoke("RoundFinal", 8);
     }
 
     void RoundFinal()
@@ -336,6 +339,10 @@ public class FinalRound : MonoBehaviour
 
     void Round3Shape1()
     {
+        countd.currentTime = 10f;
+        countd.enabled = true;
+        countText.SetActive(true);
+
         topped.SetActive(false);
         oven.SetActive(true);
         for (int i = 0; i < 18; i++)
@@ -353,16 +360,21 @@ public class FinalRound : MonoBehaviour
     {
         if (BodySourceManager.check == 0)
         {
+            countd.enabled = false;
+            countText.SetActive(false);
+
             correct.SetActive(true);
             succeed3++;
             Invoke("Round3Shape2", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("Round3Shape2", 2);
-        //}
+        else if (countd.currentTime == 0)
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("Round3Shape2", 2);
+        }
 
         else
         {

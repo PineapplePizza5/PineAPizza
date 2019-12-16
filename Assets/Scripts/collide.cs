@@ -1,4 +1,12 @@
-﻿using System.Collections;
+/* ***************************************************************
+ * 프로그램 명 : collide.cs
+ * 작성자 : 신은지, (류서현, 최세화, 이송이, 최은정, 홍예지)
+ * 최조 작성일 : 2019년 12월 04일
+ * 최종 작성일 : 2019년 12월 13일
+ * 프로그램 설명 : 마법 구현시 사용한다. 오브젝트 객체와 파티클(키넥트로 인식한 사용자 손)이 충돌할 때, 충돌횟수를 체크하여 성공여부를 판단하고, 
+ * 충돌한 오브젝트는 사라지게 한다.
+ * *************************************************************** */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,162 +43,6 @@ public class collide : MonoBehaviour
 }
 
 
-
-//public class collision : MonoBehaviour
-//{
-   
-
-//    void Start()
-//    {
-//        //string b = "a";
-//        //string c;
-//        //flame = GetComponent<ParticleSystem>();
-//        //collisionEvents = new List<ParticleCollisionEvent>();
-//        //for(int i=0; i<13; i++)
-//        //{
-//        //    c = b + i+1.ToString();
-//        //    a[i].name = c;
-//        //    c = null;
-//        //}
-//    }
-
-
-
-//    void OnParticleCollision(GameObject other)
-//    {
-//        //if (other.gameObject.name == "a1")
-//        //{
-//        //    Destroy(a[0], 0.00000001f);
-
-//        //}
-//        //else if (other.gameObject.name == "a2")
-//        //{
-//        //    Destroy(a[1], 0.00000001f);
-//        //}
-//        //else if (other.gameObject.name == "a3")
-//        //{
-//        //    Destroy(a[2], 0.00000001f);
-//        //}
-//        //else if (other.gameObject.name == "a4")
-//        //{
-//        //    Destroy(a[3], 0.00000001f);
-//        //}
-//        //else if (other.gameObject.name == "a5")
-//        //{
-//        //    Destroy(a[4], 0.00000001f);
-//        //}
-//        //else if (other.gameObject.name == "a6")
-//        //{
-//        //    Destroy(a[5], 0.00000001f);
-//        //}
-//        //else if (other.gameObject.name == "a7")
-//        //{
-//        //    Destroy(a[6], 0.00000001f);
-//        //}
-//        //else if (other.gameObject.name == "a8")
-//        //{
-//        //    Destroy(a[7], 0.00000001f);
-//        //}
-//        //else if (other.gameObject.name == "a9")
-//        //{
-//        //    Destroy(a[8], 0.00000001f);
-//        //}
-//        //else if (other.gameObject.name == "a10")
-//        //{
-//        //    Destroy(a[9], 0.00000001f);
-//        //}
-//        //else if (other.gameObject.name == "a11")
-//        //{
-//        //    Destroy(a[10], 0.00000001f);
-//        //}
-//        //else if (other.gameObject.name == "a12")
-//        //{
-//        //    Destroy(a[11], 0.00000001f);
-//        //}
-//        //else if (other.gameObject.name == "a13")
-//        //{
-//        //    Destroy(a[12], 0.00000001f);
-//        //}
-//        //else {
-//        //    print("개새끼야");
-//        //}
-
-//        if (other.gameObject.tag == "a1")
-//        {
-//            Destroy(a1, 0.00000001f);
-
-//        }
-//        else if (other.gameObject.tag == "a2")
-//        {
-//            Destroy(a2, 0.00000001f);
-//        }
-//        else if (other.gameObject.tag == "a3")
-//        {
-//            Destroy(a3, 0.00000001f);
-//        }
-//        else if (other.gameObject.tag == "a4")
-//        {
-//            Destroy(a4, 0.00000001f);
-//        }
-//        else if (other.gameObject.tag == "a5")
-//        {
-//            Destroy(a5, 0.00000001f);
-//        }
-//        else if (other.gameObject.tag == "a6")
-//        {
-//            Destroy(a6, 0.00000001f);
-//        }
-//        else if (other.gameObject.tag == "a7")
-//        {
-//            Destroy(a7, 0.00000001f);
-//        }
-//        else if (other.gameObject.tag == "a8")
-//        {
-//            Destroy(a8, 0.00000001f);
-//        }
-//        else if (other.gameObject.tag == "a9")
-//        {
-//            Destroy(a9, 0.00000001f);
-//        }
-//        else if (other.gameObject.tag == "a10")
-//        {
-//            Destroy(a10, 0.00000001f);
-//        }
-//        else if (other.gameObject.tag == "a11")
-//        {
-//            Destroy(a11, 0.00000001f);
-//        }
-//        else if (other.gameObject.tag == "a12")
-//        {
-//            Destroy(a12, 0.00000001f);
-//        }
-//        else if (other.gameObject.tag == "a13")
-//        {
-//            Destroy(a13, 0.00000001f);
-//        }
-//        else
-//        {
-//            print("개새끼야");
-//        }
-
-
-
-//    }
-
-
-
-//    //if(other.gameObject.tag == "pizza")
-//    //  {
-//    //      print("okay");
-//    //      //other.SetActive(false);
-//    //      Destroy(pizza, 0.0000005f);
-//    //  }
-//    //  else {
-//    //      print("help");
-//    //  }
-
-
-//}
 
 
 

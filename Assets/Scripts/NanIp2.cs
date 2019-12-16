@@ -12,9 +12,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NanIp2 : MonoBehaviour
 {
+    Countdown countd;
     RoundFlow roundf;
 
     public GameObject mario;
@@ -24,6 +26,7 @@ public class NanIp2 : MonoBehaviour
     public GameObject oven;
     public GameObject correct;
     public GameObject wrong;
+    public GameObject countText;
     Container situ;
 
     public void Start()
@@ -31,10 +34,11 @@ public class NanIp2 : MonoBehaviour
         BodySourceManager.hit_count = 0;
         BodySourceManager.check = 1;
 
+        countd = GameObject.Find("Canvas_count").GetComponent<Countdown>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
 
-        
+        countd.currentTime = 10f;
         oven.SetActive(false);
         Invoke("Nanip2", 2);
     }
@@ -46,6 +50,8 @@ public class NanIp2 : MonoBehaviour
 
     void ShowAlphabet1()
     {
+        countd.enabled = true;
+        countText.SetActive(true);
         for (int i = 0; i < 9; i++)
         {
             nan1[i].SetActive(true);
@@ -59,15 +65,19 @@ public class NanIp2 : MonoBehaviour
     {
         if (BodySourceManager.check == 0)
         {
+            countd.enabled = false;
+            countText.SetActive(false);
             correct.SetActive(true);
             Invoke("ShowAlphabet2", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("ShowAlphabet2", 2);
-        //}
+        else if (countd.currentTime == 0)
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("ShowShape2", 2);
+        }
 
         else
         {
@@ -79,6 +89,10 @@ public class NanIp2 : MonoBehaviour
     {
         correct.SetActive(false);
         wrong.SetActive(false);
+
+        countd.currentTime = 10f;
+        countd.enabled = true;
+        countText.SetActive(true);
 
         for (int i = 0; i < 9; i++)
         {
@@ -106,15 +120,19 @@ public class NanIp2 : MonoBehaviour
     {
         if (BodySourceManager.check == 0)
         {
+            countd.enabled = false;
+            countText.SetActive(false);
             correct.SetActive(true);
             Invoke("GoNext", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("ShowShape2", 2);
-        //}
+        else if (countd.currentTime == 0)
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("GoNext", 2);
+        }
 
         else
         {

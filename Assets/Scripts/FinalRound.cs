@@ -1,5 +1,5 @@
 ﻿/* ***************************************************************
- * 프로그램 명 : Round3Real.cs
+ * 프로그램 명 : FinalRound.cs
  * 작성자 : 최은정 (이송이, 류서현, 신은지, 최세화, 홍예지)
  * 최조 작성일 : 2019년 12월 10일
  * 최종 작성일 : 2019년 12월 10일
@@ -8,9 +8,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinalRound : MonoBehaviour
 {
+    Countdown countd;
     RoundFlow roundf;
 
     public GameObject[] cut1;
@@ -26,6 +28,7 @@ public class FinalRound : MonoBehaviour
     public GameObject[] fir2;
     public GameObject perfect;
 
+    public GameObject countText;
     public GameObject correct;
     public GameObject wrong;
 
@@ -38,10 +41,12 @@ public class FinalRound : MonoBehaviour
         BodySourceManager.hit_count = 0;
         BodySourceManager.check = 1;
 
+        countd = GameObject.Find("Canvas_count").GetComponent<Countdown>();
         endi = GameObject.Find("Canvass").GetComponent<Ending>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
 
+        countd.currentTime = 10f;
         perfect.SetActive(false);
         correct.SetActive(false);
 
@@ -55,6 +60,9 @@ public class FinalRound : MonoBehaviour
 
     void Round1Shape1()
     {
+        countd.enabled = true;
+        countText.SetActive(true);
+
         for (int i = 0; i < 17; i++)
         {
             cut1[i].SetActive(true);
@@ -67,16 +75,21 @@ public class FinalRound : MonoBehaviour
     {
         if (BodySourceManager.check == 0)
         {
+            countd.enabled = false;
+            countText.SetActive(false);
+
             correct.SetActive(true);
             succeed1++;
             Invoke("Round1Shape2", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("Round1Shape2", 2);
-        //}
+        else if (countd.currentTime == 0)
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("Round1Shape2", 2);
+        }
 
         else
         {
@@ -88,6 +101,10 @@ public class FinalRound : MonoBehaviour
     {
         correct.SetActive(false);
         wrong.SetActive(false);
+
+        countd.currentTime = 10f;
+        countd.enabled = true;
+        countText.SetActive(true);
 
         for (int i = 0; i < 17; i++)
         {
@@ -114,16 +131,20 @@ public class FinalRound : MonoBehaviour
     {
         if (BodySourceManager.check == 0)
         {
+            countd.enabled = false;
+            countText.SetActive(false);
             correct.SetActive(true);
             succeed1++;
             Invoke("ShowSliced", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("Round2Shape2", 2);
-        //}
+        else if (countd.currentTime == 0)
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("GoNext1", 2);
+        }
 
         else
         {
@@ -141,9 +162,10 @@ public class FinalRound : MonoBehaviour
             }
 
         }
+
         correct.SetActive(false);
         wrong.SetActive(false);
-        
+
         sliced.SetActive(true);
 
         if (succeed1 == 2)  //두 주문 모두 성공한 경우 1라운드 성공
@@ -153,10 +175,29 @@ public class FinalRound : MonoBehaviour
         Invoke("Round2Shape1", 2);
     }
 
+    void GoNext1()
+    {
+        for (int i = 0; i < 13; i++)
+        {
+            if (cut2[i] != null)
+            {
+                cut2[i].SetActive(false);
+            }
+
+        }
+
+        correct.SetActive(false);
+        wrong.SetActive(false);
+
+        Invoke("Round2Shape1", 2);
+    }
 
 
     void Round2Shape1()
     {
+        countd.currentTime = 10f;
+        countd.enabled = true;
+        countText.SetActive(true);
         sliced.SetActive(false);
 
         for (int i = 0; i < 13; i++)
@@ -174,16 +215,21 @@ public class FinalRound : MonoBehaviour
     {
         if (BodySourceManager.check == 0)
         {
+            countd.enabled = false;
+            countText.SetActive(false);
+
             correct.SetActive(true);
             succeed2++;
             Invoke("Round2Shape2", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("Round2Shape2", 2);
-        //}
+        else if (countd.currentTime == 0)
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("Round2Shape2", 2);
+        }
 
         else
         {
@@ -195,6 +241,10 @@ public class FinalRound : MonoBehaviour
     {
         correct.SetActive(false);
         wrong.SetActive(false);
+
+        countd.currentTime = 10f;
+        countd.enabled = true;
+        countText.SetActive(true);
 
         for (int i = 0; i < 13; i++)
         {
@@ -221,16 +271,21 @@ public class FinalRound : MonoBehaviour
     {
         if (BodySourceManager.check == 0)
         {
+            countd.enabled = false;
+            countText.SetActive(false);
+
             correct.SetActive(true);
             succeed2++;
             Invoke("ShowTopped", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("Round3Shape1", 2);
-        //}
+        else if (countd.currentTime == 0)
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("GoNext2", 2);
+        }
 
         else
         {
@@ -257,6 +312,23 @@ public class FinalRound : MonoBehaviour
         {
             endi.yeah++;
         }
+        Invoke("Round3Shape1", 2);
+    }
+    
+    void GoNext2()
+    {
+        for (int i = 0; i < 17; i++)
+        {
+            if (top2[i] != null)
+            {
+                top2[i].SetActive(false);
+            }
+
+        }
+
+        correct.SetActive(false);
+        wrong.SetActive(false);
+
         Invoke("Round3Shape1", 2);
     }
 
@@ -300,6 +372,10 @@ public class FinalRound : MonoBehaviour
 
     void Round3Shape2()
     {
+        countd.currentTime = 10f;
+        countd.enabled = true;
+        countText.SetActive(true);
+
         correct.SetActive(false);
         wrong.SetActive(false);
 
@@ -328,16 +404,21 @@ public class FinalRound : MonoBehaviour
     {
         if (BodySourceManager.check == 0)
         {
+            countd.enabled = false;
+            countText.SetActive(false);
+
             correct.SetActive(true);
             succeed3++;
             Invoke("ShowPerfect", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("Round3Shape2", 2);
-        //}
+        else if (countd.currentTime == 0)
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("GoNext3", 2);
+        }
 
         else
         {
@@ -368,4 +449,19 @@ public class FinalRound : MonoBehaviour
         endi.Start();   //엔딩조건에 따라 다른 엔딩 불러오는 Ending.cs 호출
     }
 
+    void GoNext3()
+    {
+        for (int i = 0; i < 21; i++)
+        {
+            if (fir2[i] != null)
+            {
+                fir2[i].SetActive(false);
+            }
+
+        }
+        correct.SetActive(false);
+        wrong.SetActive(false);
+
+        endi.Start();   //엔딩조건에 따라 다른 엔딩 불러오는 Ending.cs 호출
+    }
 }

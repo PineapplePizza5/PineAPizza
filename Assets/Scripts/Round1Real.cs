@@ -9,9 +9,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Round1Real : MonoBehaviour
 {
+    Countdown countd;
     RoundFlow roundf;
 
     public GameObject mario;
@@ -21,6 +23,11 @@ public class Round1Real : MonoBehaviour
     public GameObject sliced;
     public GameObject correct;
     public GameObject wrong;
+    public GameObject countText;
+    Conversation conver;
+
+    int succeed;
+
     Container situ;
 
     // Start is called before the first frame update
@@ -29,9 +36,17 @@ public class Round1Real : MonoBehaviour
         BodySourceManager.hit_count = 0;
         BodySourceManager.check = 1;
 
+        conver = GameObject.Find("Canvas").GetComponent<Conversation>();
+        countd = GameObject.Find("Canvas_count").GetComponent<Countdown>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
 
+        if (situ.situation != "RD1REAL")
+        {
+            Invoke("GoNext", 0);
+        }
+
+        countd.currentTime = 15f;
         for (int i = 0; i < 13; i++)
         {
             if (cut2[i] != null)
@@ -51,6 +66,8 @@ public class Round1Real : MonoBehaviour
 
     void ShowShape1()
     {
+        countd.enabled = true;
+        countText.SetActive(true);
         for (int i = 0; i < 17; i++)
         {
             cut1[i].SetActive(true);
@@ -61,17 +78,22 @@ public class Round1Real : MonoBehaviour
 
     void DoCheck1()
     {
-        if (BodySourceManager.check == 0)
+        if (BodySourceManager.check == 0)   //성공했을 경우
         {
+            countd.enabled = false;
+            countText.SetActive(false);
             correct.SetActive(true);
+            succeed++;
             Invoke("ShowShape2", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("ShowShape2", 2);
-        //}
+        else if (countd.currentTime == 0)   //실패했을 경우
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("ShowShape2", 2);
+        }
 
         else
         {
@@ -84,6 +106,9 @@ public class Round1Real : MonoBehaviour
         correct.SetActive(false);
         wrong.SetActive(false);
 
+        countd.currentTime = 10f;
+        countd.enabled = true;
+        countText.SetActive(true);
         for (int i = 0; i < 17; i++)
         {
             if (cut1[i] != null)
@@ -107,17 +132,22 @@ public class Round1Real : MonoBehaviour
 
     void DoCheck2()
     {
-        if (BodySourceManager.check == 0)
+        if (BodySourceManager.check == 0)   //성공했을 경우
         {
+            countd.enabled = false;
+            countText.SetActive(false);
             correct.SetActive(true);
+            succeed++;
             Invoke("ShowSliced", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("ShowShape2", 2);
-        //}
+        else if (countd.currentTime == 0)   //실패했을 경우
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("GoNext", 2);
+        }
 
         else
         {
@@ -135,12 +165,43 @@ public class Round1Real : MonoBehaviour
             }
 
         }
+
+        if (succeed == 2)  //두 주문 모두 성공한 경우 1라운드 성공
+        {
+            situ.situation = "RD1GOOD";
+            SceneManager.LoadScene("TableScene");
+        }
+        else
+        {
+            situ.situation = "RD1BAD";
+            SceneManager.LoadScene("TableScene");
+        }
+        sliced.SetActive(true);
+        Invoke("GoNext", 2);
+    }
+
+    public void GoNext()
+    {
+        for (int i = 0; i < 13; i++)
+        {
+            if (cut2[i] != null)
+            {
+                cut2[i].SetActive(false);
+            }
+
+        }
+
+        countd.enabled = false;
+        countText.SetActive(false);
+
         correct.SetActive(false);
         wrong.SetActive(false);
 
-        sliced.SetActive(true);
+        SceneManager.LoadScene("TableScene");
+
         situ.situation = "NANIP1";
         roundf.Start();
+        
     }
 
 }

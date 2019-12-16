@@ -10,7 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class RoundFlow : MonoBehaviour
 {
@@ -31,6 +31,7 @@ public class RoundFlow : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        Debug.Log("b");
         prac1 = GameObject.Find("Canvass").GetComponent<Round1Prac>();
         real1 = GameObject.Find("Canvass").GetComponent<Round1Real>();
 
@@ -61,9 +62,14 @@ public class RoundFlow : MonoBehaviour
           case "RD1REAL":
             real1.Start();
             break;
-           
-          case "NANIP2":
-            nanIp2.Start();
+
+          case "RD1GOOD":
+          case "RD1BAD":
+            real1.Start();
+            break;
+
+          case "NANIP1":
+            nanIp1.Start();
             break;
         
           case "RD2PRAC":
@@ -73,24 +79,31 @@ public class RoundFlow : MonoBehaviour
           case "RD2REAL":
             real2.Start();
             break;
-        
+
+          case "RD2GOOD":
+          case "RD2BAD":
+            real2.GoNext();
+            break;
+
           case "RD3PRAC":
             prac3.Start();
             break;
 
-          case "NANIP1":
-            nanIp1.Start();
+          case "NANIP2":
+            nanIp2.Start();
             break;
 
-          case "RD3REAL":
+            case "RD3REAL":
             real3.Start();
             break;
-        
-          case "FINAL":
-            final.Start();
+
+          case "RD3GOOD":
+          case "RD3BAD":
+            real2.GoNext();
             break;
 
-          default:
+            case "FINAL":
+            final.Start();
             break;
         }
 

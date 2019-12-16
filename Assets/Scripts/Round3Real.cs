@@ -9,9 +9,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Round3Real : MonoBehaviour
 {
+    Countdown countd;
     RoundFlow roundf;
 
     public GameObject mario;
@@ -21,6 +23,7 @@ public class Round3Real : MonoBehaviour
     public GameObject perfect;
     public GameObject correct;
     public GameObject wrong;
+    public GameObject countText;
     Container situ;
 
     // Start is called before the first frame update
@@ -29,9 +32,11 @@ public class Round3Real : MonoBehaviour
         BodySourceManager.hit_count = 0;
         BodySourceManager.check = 1;
 
+        countd = GameObject.Find("Canvas_count").GetComponent<Countdown>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
 
+        countd.currentTime = 10f;
         correct.SetActive(false);
 
         Invoke("Round3real", 2);
@@ -44,6 +49,9 @@ public class Round3Real : MonoBehaviour
 
     void ShowShape1()
     {
+        countd.enabled = true;
+        countText.SetActive(true);
+
         for (int i = 0; i < 18; i++)
         {
             fir1[i].SetActive(true);
@@ -56,15 +64,20 @@ public class Round3Real : MonoBehaviour
     {
         if (BodySourceManager.check == 0)
         {
+            countd.enabled = false;
+            countText.SetActive(false);
+
             correct.SetActive(true);
             Invoke("ShowShape2", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("ShowShape2", 2);
-        //}
+        else if (countd.currentTime == 0)
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("ShowShape2", 2);
+        }
 
         else
         {
@@ -76,6 +89,10 @@ public class Round3Real : MonoBehaviour
     {
         correct.SetActive(false);
         wrong.SetActive(false);
+
+        countd.currentTime = 10f;
+        countd.enabled = true;
+        countText.SetActive(true);
 
         for (int i = 0; i < 18; i++)
         {
@@ -102,15 +119,19 @@ public class Round3Real : MonoBehaviour
     {
         if (BodySourceManager.check == 0)
         {
+            countd.enabled = false;
+            countText.SetActive(false);
             correct.SetActive(true);
             Invoke("ShowPerfect", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("ShowShape2", 2);
-        //}
+        else if (countd.currentTime == 0)
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("GoNext", 2);
+        }
 
         else
         {
@@ -128,10 +149,29 @@ public class Round3Real : MonoBehaviour
             }
 
         }
+
+        perfect.SetActive(true);
+
         correct.SetActive(false);
         wrong.SetActive(false);
 
-        perfect.SetActive(true);
+        situ.situation = "FINAL";
+        roundf.Start();
+    }
+
+    public void GoNext()
+    {
+        for (int i = 0; i < 21; i++)
+        {
+            if (fir2[i] != null)
+            {
+                fir2[i].SetActive(false);
+            }
+
+        }
+        correct.SetActive(false);
+        wrong.SetActive(false);
+
         situ.situation = "FINAL";
         roundf.Start();
     }

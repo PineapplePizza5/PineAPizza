@@ -39,6 +39,16 @@ public class LivingConver : MonoBehaviour
     private StringReader reader;
     private string buff = "";
 
+
+    public GameObject Dad_button;
+    public GameObject Mom_button;
+    public GameObject Cat_button;
+
+    public GameObject yes_button;
+    public GameObject no_button;
+    public GameObject Mom2_button;
+    public GameObject Mom3_button;
+
     private void Awake()
     {
         // 어느 상황인지 고양이에 저장된 컴포넌트에서 SceneData불러오기.
@@ -73,6 +83,7 @@ public class LivingConver : MonoBehaviour
         else if (selectCharac == "MOM1")
         {
             Invoke("Mom1Click", 2);
+            print("엄마하나클릭");
         }
         else if (selectCharac == "MOM2")
         {
@@ -86,13 +97,27 @@ public class LivingConver : MonoBehaviour
 
     void CatClick()
     {
+        Dad_button.SetActive(false);
+        Mom_button.SetActive(false);
+        Mom2_button.SetActive(false);
+        Mom3_button.SetActive(false);
+        Cat_button.SetActive(false); ///////////////////
+
         YesButton.SetActive(true);
         NoButton.SetActive(true);
     }
     void Mom1Click()
     {
+        print("엄마하나실행클릭");
+        Dad_button.SetActive(false);
+        Cat_button.SetActive(false);
+        Mom_button.SetActive(false);/////////////
+        yes_button.SetActive(false);
+        no_button.SetActive(false);
+
         hintButton.SetActive(true);
         keyButton.SetActive(true);
+
     }
     void Mom2Click()
     {
@@ -102,6 +127,14 @@ public class LivingConver : MonoBehaviour
     {
         /// 동작 다시 보여주기 해야함......!
         Invoke("ReLiving", 1);
+
+        Dad_button.SetActive(true);
+        Cat_button.SetActive(true);
+        Mom_button.SetActive(true);////////////////
+        yes_button.SetActive(true);
+        no_button.SetActive(true);
+        Mom2_button.SetActive(true);
+        Mom3_button.SetActive(true);
     }
     void ReLiving()
     {
@@ -146,6 +179,7 @@ public class LivingConver : MonoBehaviour
         ConversationMark.SetActive(false);
         ConversationText.SetActive(false);
         CharacterText.SetActive(false);
+
     }
 
     public void ButtonClicked()
@@ -154,5 +188,7 @@ public class LivingConver : MonoBehaviour
         NoButton.SetActive(false);
         hintButton.SetActive(false);
         keyButton.SetActive(false);
+
+
     }
 }

@@ -16,7 +16,7 @@ public class BodySourceView : MonoBehaviour
     private Dictionary<ulong, GameObject> mBodies = new Dictionary<ulong, GameObject>();
 
     private List<JointType> _joints = new List<JointType> {
-    JointType.HandRight,
+    JointType.HandRight
     };
 
 
@@ -114,7 +114,7 @@ public class BodySourceView : MonoBehaviour
             newJoint.name = joint.ToString();
 
             newJoint.transform.parent = body.transform;
-        }
+       }
 
         return body;
     }

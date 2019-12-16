@@ -1309,6 +1309,121 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &47263597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 47263602}
+  - component: {fileID: 47263601}
+  - component: {fileID: 47263600}
+  - component: {fileID: 47263599}
+  - component: {fileID: 47263598}
+  m_Layer: 5
+  m_Name: Canvas_count
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &47263598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47263597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b90c8baa8000d04f8652f3625b9b28e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTime: 0
+  startingTime: 16
+  countdowntext: {fileID: 1895871988}
+--- !u!114 &47263599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47263597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &47263600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47263597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!223 &47263601
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47263597}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &47263602
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47263597}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 1895871987}
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &49031081
 GameObject:
   m_ObjectHideFlags: 0
@@ -42169,7 +42284,6 @@ GameObject:
   - component: {fileID: 1017004068}
   - component: {fileID: 1017004067}
   - component: {fileID: 1017004066}
-  - component: {fileID: 1017004065}
   m_Layer: 0
   m_Name: mario (4)
   m_TagString: mario
@@ -42177,20 +42291,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1017004065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1017004064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa86882783382e49adc57219ee227a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  distanceFromCamera: 5
 --- !u!114 &1017004066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42198,7 +42298,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017004064}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f87201255755c884290d6055ae3c1bc7, type: 3}
   m_Name: 
@@ -56231,7 +56331,6 @@ GameObject:
   - component: {fileID: 1259899432}
   - component: {fileID: 1259899431}
   - component: {fileID: 1259899430}
-  - component: {fileID: 1259899437}
   m_Layer: 0
   m_Name: mario (4)
   m_TagString: mario
@@ -56246,7 +56345,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259899429}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f87201255755c884290d6055ae3c1bc7, type: 3}
   m_Name: 
@@ -61016,20 +61115,6 @@ Transform:
   m_Father: {fileID: 1296058832}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1259899437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259899429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa86882783382e49adc57219ee227a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  distanceFromCamera: 5
 --- !u!1 &1260668225
 GameObject:
   m_ObjectHideFlags: 0
@@ -70404,6 +70489,7 @@ MonoBehaviour:
   sliced: {fileID: 1109637017}
   correct: {fileID: 1095910022}
   wrong: {fileID: 620140731}
+  countText: {fileID: 1895871986}
 --- !u!114 &1401830020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70522,6 +70608,7 @@ MonoBehaviour:
   topped: {fileID: 2029746160}
   correct: {fileID: 1095910022}
   wrong: {fileID: 620140731}
+  countText: {fileID: 1895871986}
 --- !u!114 &1401830023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70626,6 +70713,7 @@ MonoBehaviour:
   perfect: {fileID: 1782123821}
   correct: {fileID: 1095910022}
   wrong: {fileID: 620140731}
+  countText: {fileID: 1895871986}
 --- !u!114 &1401830025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70760,6 +70848,7 @@ MonoBehaviour:
   - {fileID: 590386483}
   - {fileID: 1432596209}
   perfect: {fileID: 1782123821}
+  countText: {fileID: 1895871986}
   correct: {fileID: 1095910022}
   wrong: {fileID: 620140731}
 --- !u!114 &1401830027
@@ -70798,6 +70887,7 @@ MonoBehaviour:
   oven: {fileID: 167199113}
   correct: {fileID: 1095910022}
   wrong: {fileID: 620140731}
+  countText: {fileID: 1895871986}
 --- !u!114 &1401830028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70839,6 +70929,7 @@ MonoBehaviour:
   sliced: {fileID: 1109637017}
   correct: {fileID: 1095910022}
   wrong: {fileID: 620140731}
+  countText: {fileID: 1895871986}
 --- !u!1 &1405986091
 GameObject:
   m_ObjectHideFlags: 0
@@ -81357,6 +81448,83 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1895871986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1895871987}
+  - component: {fileID: 1895871989}
+  - component: {fileID: 1895871988}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1895871987
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895871986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_Children: []
+  m_Father: {fileID: 47263602}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -625, y: 378}
+  m_SizeDelta: {x: 200, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1895871988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895871986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 70
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 7
+    m_MaxSize: 70
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 0
+--- !u!222 &1895871989
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895871986}
+  m_CullTransparentMesh: 0
 --- !u!1 &1898798458
 GameObject:
   m_ObjectHideFlags: 0
@@ -82623,8 +82791,8 @@ GameObject:
   - component: {fileID: 1954014694}
   - component: {fileID: 1954014693}
   - component: {fileID: 1954014692}
-  - component: {fileID: 1954014691}
   - component: {fileID: 1954014690}
+  - component: {fileID: 1954014691}
   m_Layer: 0
   m_Name: mario (7)
   m_TagString: mario
@@ -82662,11 +82830,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1954014689}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa86882783382e49adc57219ee227a5, type: 3}
+  m_Script: {fileID: 11500000, guid: f87201255755c884290d6055ae3c1bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  distanceFromCamera: 5
 --- !u!61 &1954014692
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -87567,8 +87733,8 @@ GameObject:
   - component: {fileID: 1957672414}
   - component: {fileID: 1957672413}
   - component: {fileID: 1957672412}
-  - component: {fileID: 1957672411}
   - component: {fileID: 1957672410}
+  - component: {fileID: 1957672411}
   m_Layer: 0
   m_Name: mario (6)
   m_TagString: mario
@@ -87606,11 +87772,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1957672409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa86882783382e49adc57219ee227a5, type: 3}
+  m_Script: {fileID: 11500000, guid: f87201255755c884290d6055ae3c1bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  distanceFromCamera: 5
 --- !u!61 &1957672412
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -96900,8 +97064,8 @@ GameObject:
   - component: {fileID: 2114311438}
   - component: {fileID: 2114311437}
   - component: {fileID: 2114311436}
-  - component: {fileID: 2114311435}
   - component: {fileID: 2114311434}
+  - component: {fileID: 2114311435}
   m_Layer: 0
   m_Name: mario (5)
   m_TagString: mario
@@ -96939,11 +97103,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2114311433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fa86882783382e49adc57219ee227a5, type: 3}
+  m_Script: {fileID: 11500000, guid: f87201255755c884290d6055ae3c1bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  distanceFromCamera: 5
 --- !u!61 &2114311436
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -102427,5 +102589,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: efc3311632465cc4d9bbce00ead45e2c,
         type: 3}
+    - target: {fileID: 6432065268531812285, guid: e772b74d941e4c94a894ffb55c2fa736,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e772b74d941e4c94a894ffb55c2fa736, type: 3}

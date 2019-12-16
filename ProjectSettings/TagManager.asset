@@ -3,7 +3,26 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - a12
+  - a1
+  - a16
+  - a11
+  - a3
+  - a4
+  - a14
+  - a17
+  - a6
+  - a8
+  - a5
+  - a2
+  - mario
+  - a7
+  - a13
+  - a10
+  - a9
+  - a15
+  - a18
   layers:
   - Default
   - TransparentFX
@@ -13,8 +32,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - ddd
+  - "\uC65C!"
   - 
   - 
   - 

@@ -15,7 +15,16 @@ public class CameraMove : MonoBehaviour
 {
     public GameObject Cat;
     public GameObject Mom;
+    public GameObject Mom_button;
+    public GameObject Dad_button;
+    public GameObject yes_button;
+    public GameObject no_button;
+    public GameObject mom2_button;
+    public GameObject mom3_button;
+
+    //public int target;
     Transform trans;
+
 
     public Camera mainCamera;
 
@@ -38,5 +47,9 @@ public class CameraMove : MonoBehaviour
     {
         mainCamera.fieldOfView = 26;
         mainCamera.transform.position = new Vector3(0, 0, -14);
+
+        Dad_button.SetActive(true);
+        Mom_button.SetActive(true);////////////////
+        
     }
 }

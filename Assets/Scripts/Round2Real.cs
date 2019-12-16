@@ -9,9 +9,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Round2Real : MonoBehaviour
 {
+    Countdown countd;
     RoundFlow roundf;
 
     public GameObject mario;
@@ -21,7 +23,10 @@ public class Round2Real : MonoBehaviour
     public GameObject topped;
     public GameObject correct;
     public GameObject wrong;
+    public GameObject countText;
     Container situ;
+
+    int succeed;
 
     // Start is called before the first frame update
     public void Start()
@@ -29,9 +34,10 @@ public class Round2Real : MonoBehaviour
         BodySourceManager.hit_count = 0;
         BodySourceManager.check = 1;
 
+        countd = GameObject.Find("Canvas_count").GetComponent<Countdown>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
-        situ = GameObject.Find("Situation").GetComponent<Container>();
-        
+
+        countd.currentTime = 10f;
         correct.SetActive(false);
 
         Invoke("Round2real", 4);
@@ -44,6 +50,8 @@ public class Round2Real : MonoBehaviour
 
     void ShowShape1()
     {
+        countd.enabled = true;
+        countText.SetActive(true);
         for (int i = 0; i < 13; i++)
         {
             top1[i].SetActive(true);
@@ -56,15 +64,20 @@ public class Round2Real : MonoBehaviour
     {
         if (BodySourceManager.check == 0)
         {
+            countd.enabled = false;
+            countText.SetActive(false);
             correct.SetActive(true);
+            succeed++;
             Invoke("ShowShape2", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("ShowShape2", 2);
-        //}
+        else if (countd.currentTime == 0)
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("ShowShape2", 2);
+        }
 
         else
         {
@@ -76,6 +89,10 @@ public class Round2Real : MonoBehaviour
     {
         correct.SetActive(false);
         wrong.SetActive(false);
+
+        countd.currentTime = 10f;
+        countd.enabled = true;
+        countText.SetActive(true);
 
         for (int i = 0; i < 13; i++)
         {
@@ -102,15 +119,20 @@ public class Round2Real : MonoBehaviour
     {
         if (BodySourceManager.check == 0)
         {
+            countd.enabled = false;
+            countText.SetActive(false);
             correct.SetActive(true);
+            succeed++;
             Invoke("ShowTopped", 2);
         }
 
-        //else if(남은시간 < 0)
-        //{
-        //    wrong.SetActive(true);
-        //    Invoke("ShowShape2", 2);
-        //}
+        else if (countd.currentTime == 0)
+        {
+            countd.enabled = false;
+            countText.SetActive(false);
+            wrong.SetActive(true);
+            Invoke("GoNext", 2);
+        }
 
         else
         {
@@ -128,10 +150,37 @@ public class Round2Real : MonoBehaviour
             }
 
         }
+
+        situ = GameObject.Find("Situation").GetComponent<Container>();
+
+        if (succeed == 2)  //두 주문 모두 성공한 경우 2라운드 성공
+        {
+            situ.situation = "RD2GOOD";
+            SceneManager.LoadScene("TableScene");
+        }
+        else
+        {
+            situ.situation = "RD2BAD";
+            SceneManager.LoadScene("TableScene");
+        }
+
+        topped.SetActive(true);
+        Invoke("GoNext", 2);
+    }
+
+    public void GoNext()
+    {
+        for (int i = 0; i < 17; i++)
+        {
+            if (top2[i] != null)
+            {
+                top2[i].SetActive(false);
+            }
+
+        }
         correct.SetActive(false);
         wrong.SetActive(false);
 
-        topped.SetActive(true);
         situ.situation = "RD3PRAC";
         roundf.Start();
     }

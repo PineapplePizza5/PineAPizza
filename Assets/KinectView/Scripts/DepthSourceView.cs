@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+  
+/* ***************************************************************
+ * 프로그램 명 : DepthSourceView.cs
+ * 작성자 : 신은지, 최세화 (류서현, 이송이, 최은정, 홍예지) + 오픈소스 - kinect for unity
+ * 최조 작성일 : 2019년 11월 14일
+ * 최종 작성일 : 2019년 12월 15일
+ * 프로그램 설명 : DepthSourceManager를 이용, 게임 오브젝트에 실제 body depth를 받아와 실질적인 기능을 구현하도록 한다.
+ * *************************************************************** */
+using UnityEngine;
 using System.Collections;
 using Windows.Kinect;
 

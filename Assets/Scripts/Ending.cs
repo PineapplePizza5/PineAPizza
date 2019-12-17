@@ -15,8 +15,7 @@ public class Ending : MonoBehaviour
     Container situ;
     public int yeah = 0;    //최종 시험에서 성공한 단계 수
     public int hidden = 0;    //최종 시험에서 성공한 단계 수
-
-    // Start is called before the first frame update
+    
     public void Start()
     {
         situ = GameObject.Find("Situation").GetComponent<Container>();
@@ -65,11 +64,10 @@ public class Ending : MonoBehaviour
         }
     }
 
-    //private void Awake()
-    //{
-    //    DontDestroyOnLoad(gameObject);
-    //}
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
 }
 

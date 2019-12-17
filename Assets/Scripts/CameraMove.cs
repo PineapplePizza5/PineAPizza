@@ -50,7 +50,7 @@ public class CameraMove : MonoBehaviour
         mainCamera.transform.position = new Vector3(0, 0, -14);
 
         Dad_button.SetActive(true);
-        Mom_button.SetActive(true);////////////////
+        Mom_button.SetActive(true);
         Cat_button.SetActive(true);
 
     }

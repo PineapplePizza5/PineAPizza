@@ -12,16 +12,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour { 
-
-    // 최은정
+    
     public void SceneLoad(string sceneName) {   //씬 이름(문자열)을 통해 씬을 로드
         SceneManager.LoadScene(sceneName);
     }
-    public void SceneLoad(int sceneNum) {   //씬 번호(숫자)를 통해 씬을 로드
+    public void SceneLoad(int sceneNum) {       //씬 번호(숫자)를 통해 씬을 로드
         SceneManager.LoadScene(sceneNum);
     }
-
-    // 홍예지
+    
     public void GameQuit()
     {
     #if UNITY_EDITOR

@@ -44,7 +44,7 @@ public class FinalRound : MonoBehaviour
         BodySourceManager.check = 1;
 
         countd = GameObject.Find("Canvas_count").GetComponent<Countdown>();
-        endi = GameObject.Find("Canvass").GetComponent<Ending>();
+        endi = GameObject.Find("Canvas_ending").GetComponent<Ending>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
         conver = GameObject.Find("Canvas").GetComponent<Conversation>();

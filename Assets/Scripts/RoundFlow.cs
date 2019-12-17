@@ -2,9 +2,11 @@
  * 프로그램 명 : RoundFlow.cs
  * 작성자 : 최은정 (이송이, 류서현, 신은지, 최세화, 홍예지)
  * 최조 작성일 : 2019년 12월 03일
- * 최종 작성일 : 2019년 12월 06일
+ * 최종 작성일 : 2019년 12월 16일
  * 프로그램 설명 : 총 3개의 라운드, 2번의 동생 난입, 최종 시험의 흐름을 관리한다.
- *                 전체 흐름은 다음과 같다. RD1PRAC -> RD1REAL -> NANIP1 -> RD2PRAC -> RD2REAL -> RD3PRAC -> NANIP2 -> RD3REAL -> FINAL
+ *                 전체적인 게임의 흐름은 다음과 같다.
+ *                 RD1PRAC -> RD1REAL -> NANIP1 -> RD2PRAC -> RD2REAL
+ *                 -> RD3PRAC -> NANIP2 -> RD3REAL -> FINAL
  * *************************************************************** */
 
 using System.Collections;
@@ -27,11 +29,9 @@ public class RoundFlow : MonoBehaviour
     FinalRound final;
 
     Container situ;
-
-    // Start is called before the first frame update
+    
     public void Start()
     {
-        Debug.Log("b");
         prac1 = GameObject.Find("Canvass").GetComponent<Round1Prac>();
         real1 = GameObject.Find("Canvass").GetComponent<Round1Real>();
 
@@ -50,8 +50,7 @@ public class RoundFlow : MonoBehaviour
 
         Invoke("Wow", 1);
     }
-
-    // Update is called once per frame
+    
     void Wow() //라운드를 제어하는 함수
     {
         switch (situ.situation) {

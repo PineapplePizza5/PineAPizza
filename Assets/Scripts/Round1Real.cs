@@ -2,7 +2,7 @@
  * 프로그램 명 : Round1Real.cs
  * 작성자 : 최은정 (이송이, 류서현, 신은지, 최세화, 홍예지)
  * 최조 작성일 : 2019년 12월 02일
- * 최종 작성일 : 2019년 12월 07일
+ * 최종 작성일 : 2019년 12월 16일
  * 프로그램 설명 : Round1의 실전 단계에 알맞게 창을 구성한다.
  * *************************************************************** */
 
@@ -143,10 +143,8 @@ public class Round1Real : MonoBehaviour
 
     void DoCheck2()
     {
-        Debug.Log("Docheck2 진입");
         if (BodySourceManager.check == 0)   //성공했을 경우
         {
-            Debug.Log("succeed");
             countd.enabled = false;
             countText.SetActive(false);
             correct.SetActive(true);
@@ -192,7 +190,6 @@ public class Round1Real : MonoBehaviour
         {
             situ.situation = "RD1GOOD";
             conver.Awake();
-            //SceneManager.LoadScene("TableScene");
         }
         else
         {

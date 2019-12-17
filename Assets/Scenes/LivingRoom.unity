@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dbf3fe3125b9034f9f4add979982692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  situation: NANIP1
+  situation: RD1PRAC
 --- !u!4 &30543003
 Transform:
   m_ObjectHideFlags: 0

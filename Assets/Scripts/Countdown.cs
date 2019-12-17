@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/* ***************************************************************
+ * 프로그램 명 : Countdown.cs
+ * 작성자 : 최세화 (이송이, 류서현, 신은지, 최은정, 홍예지)
+ * 최조 작성일 : 2019년 12월 10일
+ * 최종 작성일 : 2019년 12월 16일
+ * 프로그램 설명 : 게임 라운드의 타이머를 구현하기 위한 프로그램이다.
+ * *************************************************************** */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,14 +17,13 @@ public class Countdown : MonoBehaviour
     public float startingTime = 20f;
 
     [SerializeField] Text countdowntext;
-    // Start is called before the first frame update
+
     public void Start()
     {
         startingTime = 20f;
         currentTime = startingTime;
     }
      
-    // Update is called once per frame
     void Update()
     {
         currentTime -= 1 * Time.deltaTime;
@@ -38,10 +44,5 @@ public class Countdown : MonoBehaviour
 
         }
     }
-
-    //private void Awake()
-    //{
-    //    DontDestroyOnLoad(gameObject);
-    //}
 
 }

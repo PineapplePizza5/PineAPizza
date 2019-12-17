@@ -1,4 +1,3 @@
-
 /* ***************************************************************
  * 프로그램 명 :FollowMouse.cs
  * 작성자 : 신은지, 최세화 (류서현, 이송이, 최은정, 홍예지)
@@ -13,26 +12,9 @@ using UnityEngine;
 
 public class FollowMouse : MonoBehaviour
 {
-
     public float speed = 3.0f;
     public float distanceFromCamera = 5.0f;
-
-
-
-    void Awake()
-    {
-
-    }
-
-    // ...
-
-    void Start()
-    {
-
-    }
-
-    // ...
-
+    
     void Update()
     {
         Vector3 mousePosition = Input.mousePosition;
@@ -45,16 +27,9 @@ public class FollowMouse : MonoBehaviour
         transform.position = position;
     }
 
-    // ...
-
     void LateUpdate()
     {
 
     }
-
-    // =================================	
-    // End functions.
-    // =================================
-
 }
 

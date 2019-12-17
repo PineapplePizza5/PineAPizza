@@ -4,7 +4,7 @@
  * 최조 작성일 : 2019년 12월 04일
  * 최종 작성일 : 2019년 12월 13일
  * 프로그램 설명 : 파일 입출력으로 Livingroom Scene에 맞는 대화를 불러온 뒤
- *                      게임 화면에 대화 형식으로 보여준다.
+ *                 게임 화면에 대화 형식으로 보여준다.
  * *************************************************************** */
 
 using System.IO;
@@ -56,11 +56,6 @@ public class LivingConver : MonoBehaviour
         scene = GameObject.Find("SceneController").GetComponent<SceneController>();
         cameraMoving = GameObject.Find("Main Camera").GetComponent<CameraMove>();
         sceneData = situ.situation;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
     }
 
     public void start_livingcon(string selectCharac)

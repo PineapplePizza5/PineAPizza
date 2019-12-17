@@ -26,6 +26,7 @@ public class Round2Real : MonoBehaviour
     public GameObject wrong;
     public GameObject countText;
     Container situ;
+    LifeControl lifecon;
 
     int succeed;
 
@@ -39,12 +40,16 @@ public class Round2Real : MonoBehaviour
         conver = GameObject.Find("Canvas").GetComponent<Conversation>();
         countd = GameObject.Find("Canvas_count").GetComponent<Countdown>();
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
+        lifecon = GameObject.Find("Canvas_life").GetComponent<LifeControl>();
+
+        if (lifecon.life == 2) { lifecon.Life1.SetActive(true); lifecon.Life2.SetActive(true); }
+        else if (lifecon.life == 1) { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(true); }
 
         conver.Awake();
         countd.currentTime = 10f;
         correct.SetActive(false);
 
-        Invoke("Round2real", 4);
+        Invoke("Round2real", 5);
     }
 
     void Round2real()
@@ -81,6 +86,14 @@ public class Round2Real : MonoBehaviour
             countText.SetActive(false);
             wrong.SetActive(true);
             Invoke("ShowShape2", 2);
+
+
+            lifecon.life--;
+            if (lifecon.life == 1)
+            { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(false); situ.situation = "RD2REAL"; SceneManager.LoadScene("LivingRoom"); }
+            else if (lifecon.life == 0)
+            { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(false); situ.situation = "RD2REAL"; SceneManager.LoadScene("Menu"); }
+            
         }
 
         else
@@ -136,6 +149,16 @@ public class Round2Real : MonoBehaviour
             countText.SetActive(false);
             wrong.SetActive(true);
             Invoke("GoNext", 2);
+
+
+            lifecon.life--;
+
+            if (lifecon.life == 1)
+            { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(false); situ.situation = "RD2REAL"; SceneManager.LoadScene("LivingRoom"); }
+
+            else if (lifecon.life == 0)
+            { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(false); situ.situation = "RD2REAL"; SceneManager.LoadScene("Menu"); }
+            
         }
 
         else

@@ -14,7 +14,6 @@ public class collideformom3 : MonoBehaviour
 
     public GameObject button;
     public GameObject mario;
-
     public GameObject Mom;
 
 
@@ -32,8 +31,8 @@ public class collideformom3 : MonoBehaviour
         livemo.start_livingcon("MOM3");
         livemo.ButtonClicked();
 
-
         print("tnqkfd");
+
 
 
 

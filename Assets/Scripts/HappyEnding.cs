@@ -21,12 +21,25 @@ public class HappyEnding : MonoBehaviour
         {
             Invoke("ShowHidden", 10);
         }
+        else
+        {
+            Invoke("ShowMenu", 10);
+        }
         
     }
 
     void ShowHidden()
     {
         SceneManager.LoadScene("HiddenEnding");
+    }
+
+    void ShowMenu()
+    {
+        situ.situation = "RD1PRAC";
+        lifecon.life = 2;
+        endi.hidden = 0;
+
+        SceneManager.LoadScene("Menu");
     }
 
 }

@@ -91,33 +91,19 @@ public class Round1Real : MonoBehaviour
 
         else if (countd.currentTime == 0)   //실패했을 경우
         {
-            Debug.Log("0");
             countd.enabled = false;
-            Debug.Log("a");
             countText.SetActive(false);
-            Debug.Log("bDDDDDDDD");
             wrong.SetActive(true);
             
             lifecon.life--;
+            lifecon.Life1.SetActive(false);
+            lifecon.Life2.SetActive(false);
 
-            Debug.Log("라이프쭌다" + lifecon.life);
+            wrong.SetActive(false);
 
-            if (lifecon.life == 1)
-            {
-                lifecon.Life1.SetActive(false);
-                lifecon.Life2.SetActive(false);
-                wrong.SetActive(false);
-                SceneManager.LoadScene("LivingRoom");
-
-            }
-            else if (lifecon.life == 0)
-            {
-                lifecon.Life1.SetActive(false);
-                lifecon.Life2.SetActive(false);
-
-                lifecon.life = 2;
-                SceneManager.LoadScene("Menu");
-            }
+            situ.situation = "RD1REAL";
+            SceneManager.LoadScene("LivingRoom");
+            
         }
 
         else
@@ -177,8 +163,12 @@ public class Round1Real : MonoBehaviour
             
             lifecon.life--;
 
-            if (lifecon.life == 1) { lifecon.Life1.SetActive(false); SceneManager.LoadScene("LivingRoom"); }
-            else if (lifecon.life == 0) { lifecon.Life2.SetActive(false);SceneManager.LoadScene("Menu"); }
+            if (lifecon.life == 1)
+            { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(false); situ.situation = "RD1REAL"; SceneManager.LoadScene("LivingRoom"); }
+
+            else if (lifecon.life == 0)
+            { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(false); situ.situation = "RD1REAL"; SceneManager.LoadScene("Menu"); }
+            
         }
 
         else

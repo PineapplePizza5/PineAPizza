@@ -30,6 +30,9 @@ public class Round3Prac : MonoBehaviour
 
     public void Start()
     {
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
         conver = GameObject.Find("Canvas").GetComponent<Conversation>();

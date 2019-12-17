@@ -26,7 +26,9 @@ public class Round1Prac : MonoBehaviour
 
     public void Start()
     {
-        
+        BodySourceManager.hit_count = 0;
+        BodySourceManager.check = 1;
+
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
         mario.SetActive(true);

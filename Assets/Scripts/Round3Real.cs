@@ -26,6 +26,7 @@ public class Round3Real : MonoBehaviour
     public GameObject wrong;
     public GameObject countText;
     Container situ;
+    LifeControl lifecon;
 
     int succeed;
 
@@ -39,6 +40,10 @@ public class Round3Real : MonoBehaviour
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
         conver = GameObject.Find("Canvas").GetComponent<Conversation>();
+        lifecon = GameObject.Find("Canvas_life").GetComponent<LifeControl>();
+
+        if (lifecon.life == 2) { lifecon.Life1.SetActive(true); lifecon.Life2.SetActive(true); }
+        else if (lifecon.life == 1) { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(true); }
 
         conver.Awake();
         countd.currentTime = 10f;
@@ -83,6 +88,18 @@ public class Round3Real : MonoBehaviour
             countText.SetActive(false);
             wrong.SetActive(true);
             Invoke("ShowShape2", 2);
+
+
+
+
+            lifecon.life--;
+
+            if (lifecon.life == 1)
+            { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(false); situ.situation = "RD3REAL"; SceneManager.LoadScene("LivingRoom"); }
+
+            else if (lifecon.life == 0)
+            { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(false); situ.situation = "RD3REAL"; SceneManager.LoadScene("Menu"); }
+            
         }
 
         else
@@ -139,6 +156,16 @@ public class Round3Real : MonoBehaviour
             countText.SetActive(false);
             wrong.SetActive(true);
             Invoke("GoNext", 2);
+
+
+            lifecon.life--;
+
+            if (lifecon.life == 1)
+            { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(false); situ.situation = "RD3REAL"; SceneManager.LoadScene("LivingRoom"); }
+
+            else if (lifecon.life == 0)
+            { lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(false); situ.situation = "RD3REAL"; SceneManager.LoadScene("Menu"); }
+            
         }
 
         else

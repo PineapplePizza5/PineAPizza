@@ -11,7 +11,7 @@ public class collideforskipbutton : MonoBehaviour
         public GameObject mario;
 
 
-        void OnTriggerEnter2D(Collider2D collision)
+        void OnTriggerExit2D(Collider2D collision)
         {
             
             SceneManager.LoadScene("Tutorial");

@@ -43,7 +43,7 @@ public class NanIp2 : MonoBehaviour
         situ = GameObject.Find("Situation").GetComponent<Container>();
 
         conver.Awake();
-        countd.currentTime = 10f;
+        countd.currentTime = 12f;
         oven.SetActive(false);
         Invoke("Nanip2", 2);
     }
@@ -83,7 +83,7 @@ public class NanIp2 : MonoBehaviour
             countd.enabled = false;
             countText.SetActive(false);
             wrong.SetActive(true);
-            Invoke("ShowShape2", 2);
+            Invoke("ShowAlphabet2", 2);
         }
 
         else
@@ -151,6 +151,8 @@ public class NanIp2 : MonoBehaviour
 
     void GoNext()
     {
+        correct.SetActive(false);
+        wrong.SetActive(false);
         for (int i = 0; i < 9; i++)
         {
             if (nan2[i] != null)

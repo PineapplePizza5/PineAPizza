@@ -69,7 +69,7 @@ public class RoundFlow : MonoBehaviour
             nanIp1.Start();
             break;
         
-          case "RD2PRAC":
+          case "RD2PRAC":       //라운드 2 연습을 수행하는 스크립트 실행
             prac2.Start();
             break;
         

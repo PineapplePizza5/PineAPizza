@@ -71,7 +71,8 @@ public class LivingConver : MonoBehaviour
         // buff에 한 줄 받아오기
         buff = reader.ReadLine();
         Debug.Log(buff); // 현재 상황을 Console에 표시
-        
+
+
         // 1초마다 DoConversation함수 호출
         InvokeRepeating("DoConversation", 0, 2);
 
@@ -87,10 +88,12 @@ public class LivingConver : MonoBehaviour
         }
         else if (selectCharac == "MOM2")
         {
+
             Invoke("Mom2Click", 6);
         }
         else if (selectCharac == "MOM3")
         {
+
             Invoke("Mom3Click", 8);
         }
     }
@@ -99,21 +102,27 @@ public class LivingConver : MonoBehaviour
     {
         Dad_button.SetActive(false);
         Mom_button.SetActive(false);
+        Cat_button.SetActive(false);
+
         Mom2_button.SetActive(false);
         Mom3_button.SetActive(false);
-        Cat_button.SetActive(false); ///////////////////
 
+        yes_button.SetActive(true);
+        no_button.SetActive(true);
         YesButton.SetActive(true);
         NoButton.SetActive(true);
     }
     void Mom1Click()
     {
-        print("엄마하나실행클릭");
         Dad_button.SetActive(false);
+        Mom_button.SetActive(false);
         Cat_button.SetActive(false);
-        Mom_button.SetActive(false);/////////////
+
         yes_button.SetActive(false);
         no_button.SetActive(false);
+
+        Mom2_button.SetActive(true);
+        Mom3_button.SetActive(true);
 
         hintButton.SetActive(true);
         keyButton.SetActive(true);
@@ -121,20 +130,31 @@ public class LivingConver : MonoBehaviour
     }
     void Mom2Click()
     {
+        Dad_button.SetActive(false);
+        Mom_button.SetActive(false);
+        Cat_button.SetActive(false);
+
+        yes_button.SetActive(false);
+        no_button.SetActive(false);
+
+        Mom2_button.SetActive(false);
+        Mom3_button.SetActive(false);
+
         scene.SceneLoad("Tutorial");
     }
     void Mom3Click()
     {
+        Dad_button.SetActive(false);
+        Mom_button.SetActive(false);
+        Cat_button.SetActive(false);
+
+        yes_button.SetActive(false);
+        no_button.SetActive(false);
+
+        Mom2_button.SetActive(false);
+        Mom3_button.SetActive(false);
         /// 동작 다시 보여주기 해야함......!
         Invoke("ReLiving", 1);
-
-        Dad_button.SetActive(true);
-        Cat_button.SetActive(true);
-        Mom_button.SetActive(true);////////////////
-        yes_button.SetActive(true);
-        no_button.SetActive(true);
-        Mom2_button.SetActive(true);
-        Mom3_button.SetActive(true);
     }
     void ReLiving()
     {
@@ -143,7 +163,7 @@ public class LivingConver : MonoBehaviour
     }
 
     void DoConversation()
-    {
+    { 
         buff = reader.ReadLine();
         string[] values;
 
@@ -155,6 +175,15 @@ public class LivingConver : MonoBehaviour
                 reader.Close();
                 return;
             }
+            Dad_button.SetActive(false);
+            Mom_button.SetActive(false);
+            Cat_button.SetActive(false);
+
+            Mom2_button.SetActive(false);
+            Mom3_button.SetActive(false);
+            yes_button.SetActive(false);
+            no_button.SetActive(false);
+
             // 대화창을 활성화한다.
             ConversationBox.SetActive(true);
             ConversationMark.SetActive(true);
@@ -188,7 +217,15 @@ public class LivingConver : MonoBehaviour
         NoButton.SetActive(false);
         hintButton.SetActive(false);
         keyButton.SetActive(false);
+        yes_button.SetActive(false);
+        no_button.SetActive(false);
+        Mom2_button.SetActive(false);
+        Mom3_button.SetActive(false);
 
+        Dad_button.SetActive(true);
+        Mom_button.SetActive(true);
+        Cat_button.SetActive(true);
 
+                          
     }
 }

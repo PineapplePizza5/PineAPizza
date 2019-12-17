@@ -20,7 +20,7 @@ public class collideforyes : MonoBehaviour
 
 
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
 
 
@@ -29,7 +29,7 @@ public class collideforyes : MonoBehaviour
         print("답답허다");
 
 
-        scenecon.GameQuit();
+        //scenecon.GameQuit();
         livemo.ButtonClicked();
 
 

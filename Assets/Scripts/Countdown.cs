@@ -38,4 +38,10 @@ public class Countdown : MonoBehaviour
 
         }
     }
+
+    //private void Awake()
+    //{
+    //    DontDestroyOnLoad(gameObject);
+    //}
+
 }

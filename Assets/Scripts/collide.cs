@@ -27,19 +27,17 @@ public class collide : MonoBehaviour
 
     }
 
+
     void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (BodySourceManager.hit_count >= 8)
         {
-            BodySourceManager.check = 0; // check가 0이면 성공한 것, 0 아니면 실패한것. 
+
+            BodySourceManager.check = 0; // 0 = 성공 1 = 실패
         }
         BodySourceManager.hit_count++;
         Destroy(a1);
-
-
     }
-
 }
 
 

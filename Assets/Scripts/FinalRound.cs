@@ -36,6 +36,7 @@ public class FinalRound : MonoBehaviour
     Container situ;
     Ending endi;
     int succeed1, succeed2, succeed3;   //각 라운드의 성공 여부(2일 때 성공, 0으로 초기화)
+    LifeControl lifecon;
 
     public void Start()
     {
@@ -47,8 +48,11 @@ public class FinalRound : MonoBehaviour
         roundf = GameObject.Find("Canvass").GetComponent<RoundFlow>();
         situ = GameObject.Find("Situation").GetComponent<Container>();
         conver = GameObject.Find("Canvas").GetComponent<Conversation>();
+        lifecon = GameObject.Find("Canvas_life").GetComponent<LifeControl>();
 
-        countd.currentTime = 20f;
+        lifecon.Life1.SetActive(false); lifecon.Life2.SetActive(false);
+
+        countd.currentTime = 10f;
         perfect.SetActive(false);
         correct.SetActive(false);
         
@@ -473,6 +477,7 @@ public class FinalRound : MonoBehaviour
         }
         correct.SetActive(false);
         wrong.SetActive(false);
+        
 
         endi.Start();   //엔딩조건에 따라 다른 엔딩 불러오는 Ending.cs 호출
     }

@@ -34,7 +34,7 @@ TagManager:
   - 
   - ddd
   - "\uC65C!"
-  - 
+  - "\uB9C8\uB9AC\uC624"
   - 
   - 
   - 
@@ -59,4 +59,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: "\uB9C8\uB9AC\uC624\uB2E4\uC774\uB9D0\uC774\uC57C"
+    uniqueID: 3548952287
     locked: 0

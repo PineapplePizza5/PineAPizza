@@ -17,6 +17,7 @@ public class CameraMove : MonoBehaviour
     public GameObject Mom;
     public GameObject Mom_button;
     public GameObject Dad_button;
+    public GameObject Cat_button;
     public GameObject yes_button;
     public GameObject no_button;
     public GameObject mom2_button;
@@ -50,6 +51,7 @@ public class CameraMove : MonoBehaviour
 
         Dad_button.SetActive(true);
         Mom_button.SetActive(true);////////////////
-        
+        Cat_button.SetActive(true);
+
     }
 }

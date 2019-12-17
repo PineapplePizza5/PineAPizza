@@ -65,10 +65,10 @@ public class Ending : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+    //private void Awake()
+    //{
+    //    DontDestroyOnLoad(gameObject);
+    //}
 
 
 }

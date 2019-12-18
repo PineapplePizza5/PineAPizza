@@ -22,12 +22,20 @@ public class collideforyes : MonoBehaviour
     public GameObject mario;
     public GameObject yes;
     
-    void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         livemo = GameObject.Find("Canvas").GetComponent<LivingConver>();
         scenecon = GameObject.Find("Canvas").GetComponent<SceneController>();
 
         livemo.ButtonClicked();
+
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #elif UNITY_WEBPLAYER
+                Application.OpenURL("http://google.com");
+        #else
+                Application.Quit();
+        #endif
 
     }
 }

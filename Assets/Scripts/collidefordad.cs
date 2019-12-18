@@ -18,7 +18,7 @@ public class collidefordad : MonoBehaviour
     public GameObject button;
     public GameObject mario;
          
-    void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         SceneManager.LoadScene("TableScene");
 

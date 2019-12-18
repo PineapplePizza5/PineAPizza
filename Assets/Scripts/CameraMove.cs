@@ -31,7 +31,7 @@ public class CameraMove : MonoBehaviour
 
     public void moving(int target)
     {
-        if(target == 0)
+        if (target == 0)
         {
             trans = Cat.transform;
         }
@@ -39,9 +39,11 @@ public class CameraMove : MonoBehaviour
         {
             trans = Mom.transform;
         }
+        
         mainCamera.fieldOfView = 18;
 
-        transform.position = new Vector3(trans.position.x,trans.position.y+0.4f,transform.position.z);
+        transform.position = new Vector3(trans.position.x, trans.position.y+0.4f, transform.position.z);
+        Debug.Log("moving : " + transform.position);
     }
     
     public void ResetCamera()
@@ -52,6 +54,5 @@ public class CameraMove : MonoBehaviour
         Dad_button.SetActive(true);
         Mom_button.SetActive(true);
         Cat_button.SetActive(true);
-
     }
 }

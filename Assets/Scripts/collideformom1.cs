@@ -25,7 +25,7 @@ public class collideformom1 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        camermo = GameObject.Find("Canvas").GetComponent<CameraMove>();
+        camermo = GameObject.Find("Main Camera").GetComponent<CameraMove>();
         livemo = GameObject.Find("Canvas").GetComponent<LivingConver>();
 
         camermo.moving(1);

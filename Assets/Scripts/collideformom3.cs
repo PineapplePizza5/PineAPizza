@@ -21,7 +21,7 @@ public class collideformom3 : MonoBehaviour
     public GameObject mario;
     public GameObject Mom;
 
-    void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         livemo = GameObject.Find("Canvas").GetComponent<LivingConver>();
         

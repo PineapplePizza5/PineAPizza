@@ -23,9 +23,9 @@ public class collideforcat : MonoBehaviour
     public GameObject Cat;
     
 
-    void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        camermo = GameObject.Find("Canvas").GetComponent<CameraMove>();
+        camermo = GameObject.Find("Main Camera").GetComponent<CameraMove>();
         livemo = GameObject.Find("Canvas").GetComponent<LivingConver>();
 
         camermo.moving(0);
